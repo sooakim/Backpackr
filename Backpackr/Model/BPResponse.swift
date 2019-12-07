@@ -37,5 +37,9 @@ struct BPResponse<Body: Decodable>: Decodable{
         case badRequest = 400
         case notFound = 404
         case serverError = 500
+        
+        var isSuccess: Bool{
+            return (200 <= self.rawValue && self.rawValue < 300)
+        }
     }
 }
