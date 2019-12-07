@@ -10,14 +10,25 @@
 		28D598BC44235F43C189C9C9 /* Pods_BackpackrTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3715DF1C77267C136D3F410 /* Pods_BackpackrTests.framework */; };
 		9E6A038CEDFBDD1169E1E194 /* Pods_Backpackr.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37F3048F66D3C9178D0DA8E4 /* Pods_Backpackr.framework */; };
 		D7174A949E6D6483717ED0F0 /* Pods_Backpackr_BackpackrUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 47842C031F05EAB4427D57E9 /* Pods_Backpackr_BackpackrUITests.framework */; };
-		EB671AEE239BC561001DACCB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB671AED239BC561001DACCB /* AppDelegate.swift */; };
-		EB671AF0239BC561001DACCB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB671AEF239BC561001DACCB /* SceneDelegate.swift */; };
-		EB671AF2239BC561001DACCB /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB671AF1239BC561001DACCB /* ContentView.swift */; };
+		EB671AEE239BC561001DACCB /* BPAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB671AED239BC561001DACCB /* BPAppDelegate.swift */; };
+		EB671AF0239BC561001DACCB /* BPSceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB671AEF239BC561001DACCB /* BPSceneDelegate.swift */; };
 		EB671AF4239BC562001DACCB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EB671AF3239BC562001DACCB /* Assets.xcassets */; };
-		EB671AF7239BC562001DACCB /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EB671AF6239BC562001DACCB /* Preview Assets.xcassets */; };
 		EB671AFA239BC562001DACCB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EB671AF8239BC562001DACCB /* LaunchScreen.storyboard */; };
 		EB671B05239BC562001DACCB /* BackpackrTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB671B04239BC562001DACCB /* BackpackrTests.swift */; };
 		EB671B10239BC562001DACCB /* BackpackrUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB671B0F239BC562001DACCB /* BackpackrUITests.swift */; };
+		EB671B1F239BCADD001DACCB /* BPMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB671B1E239BCADD001DACCB /* BPMainViewController.swift */; };
+		EB671B22239BCB03001DACCB /* BPMainNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB671B21239BCB03001DACCB /* BPMainNavigationController.swift */; };
+		EB671B24239BCC96001DACCB /* BPMainReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB671B23239BCC96001DACCB /* BPMainReactor.swift */; };
+		EB671B28239BD343001DACCB /* BPResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB671B27239BD343001DACCB /* BPResponse.swift */; };
+		EB671B2A239BD3C3001DACCB /* BPProductResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB671B29239BD3C3001DACCB /* BPProductResponse.swift */; };
+		EB671B2C239BDD54001DACCB /* BPProductDetailResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB671B2B239BDD54001DACCB /* BPProductDetailResponse.swift */; };
+		EB671B2F239BE188001DACCB /* KeyedDecodingContainer+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB671B2E239BE188001DACCB /* KeyedDecodingContainer+Extension.swift */; };
+		EB671B32239BE621001DACCB /* BPNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB671B31239BE621001DACCB /* BPNavigationController.swift */; };
+		EB671B34239BE673001DACCB /* BPCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB671B33239BE672001DACCB /* BPCollectionViewController.swift */; };
+		EB671B36239BE696001DACCB /* BPViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB671B35239BE696001DACCB /* BPViewController.swift */; };
+		EB671B39239BE703001DACCB /* BPDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB671B38239BE703001DACCB /* BPDetailViewController.swift */; };
+		EB671B3B239BE74E001DACCB /* BPDetailReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB671B3A239BE74E001DACCB /* BPDetailReactor.swift */; };
+		EB671B3D239BED4D001DACCB /* Preview Content in Resources */ = {isa = PBXBuildFile; fileRef = EB671B3C239BED4C001DACCB /* Preview Content */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,11 +58,9 @@
 		D3715DF1C77267C136D3F410 /* Pods_BackpackrTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BackpackrTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E53E8F76ED5A27EA17828C55 /* Pods-Backpackr-BackpackrUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Backpackr-BackpackrUITests.debug.xcconfig"; path = "Target Support Files/Pods-Backpackr-BackpackrUITests/Pods-Backpackr-BackpackrUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		EB671AEA239BC561001DACCB /* Backpackr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Backpackr.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		EB671AED239BC561001DACCB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		EB671AEF239BC561001DACCB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		EB671AF1239BC561001DACCB /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		EB671AED239BC561001DACCB /* BPAppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPAppDelegate.swift; sourceTree = "<group>"; };
+		EB671AEF239BC561001DACCB /* BPSceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPSceneDelegate.swift; sourceTree = "<group>"; };
 		EB671AF3239BC562001DACCB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		EB671AF6239BC562001DACCB /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		EB671AF9239BC562001DACCB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EB671AFB239BC562001DACCB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EB671B00239BC562001DACCB /* BackpackrTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BackpackrTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -60,6 +69,19 @@
 		EB671B0B239BC562001DACCB /* BackpackrUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BackpackrUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB671B0F239BC562001DACCB /* BackpackrUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackpackrUITests.swift; sourceTree = "<group>"; };
 		EB671B11239BC562001DACCB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EB671B1E239BCADD001DACCB /* BPMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPMainViewController.swift; sourceTree = "<group>"; };
+		EB671B21239BCB03001DACCB /* BPMainNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPMainNavigationController.swift; sourceTree = "<group>"; };
+		EB671B23239BCC96001DACCB /* BPMainReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPMainReactor.swift; sourceTree = "<group>"; };
+		EB671B27239BD343001DACCB /* BPResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPResponse.swift; sourceTree = "<group>"; };
+		EB671B29239BD3C3001DACCB /* BPProductResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPProductResponse.swift; sourceTree = "<group>"; };
+		EB671B2B239BDD54001DACCB /* BPProductDetailResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPProductDetailResponse.swift; sourceTree = "<group>"; };
+		EB671B2E239BE188001DACCB /* KeyedDecodingContainer+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KeyedDecodingContainer+Extension.swift"; sourceTree = "<group>"; };
+		EB671B31239BE621001DACCB /* BPNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPNavigationController.swift; sourceTree = "<group>"; };
+		EB671B33239BE672001DACCB /* BPCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPCollectionViewController.swift; sourceTree = "<group>"; };
+		EB671B35239BE696001DACCB /* BPViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPViewController.swift; sourceTree = "<group>"; };
+		EB671B38239BE703001DACCB /* BPDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPDetailViewController.swift; sourceTree = "<group>"; };
+		EB671B3A239BE74E001DACCB /* BPDetailReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPDetailReactor.swift; sourceTree = "<group>"; };
+		EB671B3C239BED4C001DACCB /* Preview Content */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "Preview Content"; sourceTree = "<group>"; };
 		F02D8817F317C236E5197CC4 /* Pods-Backpackr-BackpackrUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Backpackr-BackpackrUITests.release.xcconfig"; path = "Target Support Files/Pods-Backpackr-BackpackrUITests/Pods-Backpackr-BackpackrUITests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -139,23 +161,17 @@
 		EB671AEC239BC561001DACCB /* Backpackr */ = {
 			isa = PBXGroup;
 			children = (
-				EB671AED239BC561001DACCB /* AppDelegate.swift */,
-				EB671AEF239BC561001DACCB /* SceneDelegate.swift */,
-				EB671AF1239BC561001DACCB /* ContentView.swift */,
+				EB671B25239BD304001DACCB /* Model */,
+				EB671B1D239BCAC0001DACCB /* View */,
+				EB671B2D239BE16D001DACCB /* Extensions */,
+				EB671AED239BC561001DACCB /* BPAppDelegate.swift */,
+				EB671AEF239BC561001DACCB /* BPSceneDelegate.swift */,
 				EB671AF3239BC562001DACCB /* Assets.xcassets */,
+				EB671B3C239BED4C001DACCB /* Preview Content */,
 				EB671AF8239BC562001DACCB /* LaunchScreen.storyboard */,
 				EB671AFB239BC562001DACCB /* Info.plist */,
-				EB671AF5239BC562001DACCB /* Preview Content */,
 			);
 			path = Backpackr;
-			sourceTree = "<group>";
-		};
-		EB671AF5239BC562001DACCB /* Preview Content */ = {
-			isa = PBXGroup;
-			children = (
-				EB671AF6239BC562001DACCB /* Preview Assets.xcassets */,
-			);
-			path = "Preview Content";
 			sourceTree = "<group>";
 		};
 		EB671B03239BC562001DACCB /* BackpackrTests */ = {
@@ -174,6 +190,71 @@
 				EB671B11239BC562001DACCB /* Info.plist */,
 			);
 			path = BackpackrUITests;
+			sourceTree = "<group>";
+		};
+		EB671B1D239BCAC0001DACCB /* View */ = {
+			isa = PBXGroup;
+			children = (
+				EB671B30239BE60F001DACCB /* Base */,
+				EB671B20239BCAEC001DACCB /* Main */,
+				EB671B37239BE6B6001DACCB /* Detail */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		EB671B20239BCAEC001DACCB /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				EB671B21239BCB03001DACCB /* BPMainNavigationController.swift */,
+				EB671B1E239BCADD001DACCB /* BPMainViewController.swift */,
+				EB671B23239BCC96001DACCB /* BPMainReactor.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		EB671B25239BD304001DACCB /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				EB671B26239BD309001DACCB /* Main */,
+				EB671B27239BD343001DACCB /* BPResponse.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		EB671B26239BD309001DACCB /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				EB671B29239BD3C3001DACCB /* BPProductResponse.swift */,
+				EB671B2B239BDD54001DACCB /* BPProductDetailResponse.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		EB671B2D239BE16D001DACCB /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				EB671B2E239BE188001DACCB /* KeyedDecodingContainer+Extension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		EB671B30239BE60F001DACCB /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				EB671B31239BE621001DACCB /* BPNavigationController.swift */,
+				EB671B33239BE672001DACCB /* BPCollectionViewController.swift */,
+				EB671B35239BE696001DACCB /* BPViewController.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		EB671B37239BE6B6001DACCB /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				EB671B38239BE703001DACCB /* BPDetailViewController.swift */,
+				EB671B3A239BE74E001DACCB /* BPDetailReactor.swift */,
+			);
+			path = Detail;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -206,6 +287,7 @@
 				EB671AFC239BC562001DACCB /* Sources */,
 				EB671AFD239BC562001DACCB /* Frameworks */,
 				EB671AFE239BC562001DACCB /* Resources */,
+				0021FBDD95760BD7B382E411 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -285,8 +367,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EB671B3D239BED4D001DACCB /* Preview Content in Resources */,
 				EB671AFA239BC562001DACCB /* LaunchScreen.storyboard in Resources */,
-				EB671AF7239BC562001DACCB /* Preview Assets.xcassets in Resources */,
 				EB671AF4239BC562001DACCB /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -308,6 +390,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		0021FBDD95760BD7B382E411 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-BackpackrTests/Pods-BackpackrTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-BackpackrTests/Pods-BackpackrTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-BackpackrTests/Pods-BackpackrTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		29E53CE646F08D4B07ABC3DE /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -415,9 +514,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EB671AEE239BC561001DACCB /* AppDelegate.swift in Sources */,
-				EB671AF0239BC561001DACCB /* SceneDelegate.swift in Sources */,
-				EB671AF2239BC561001DACCB /* ContentView.swift in Sources */,
+				EB671B34239BE673001DACCB /* BPCollectionViewController.swift in Sources */,
+				EB671B22239BCB03001DACCB /* BPMainNavigationController.swift in Sources */,
+				EB671B24239BCC96001DACCB /* BPMainReactor.swift in Sources */,
+				EB671B2C239BDD54001DACCB /* BPProductDetailResponse.swift in Sources */,
+				EB671B28239BD343001DACCB /* BPResponse.swift in Sources */,
+				EB671B39239BE703001DACCB /* BPDetailViewController.swift in Sources */,
+				EB671AEE239BC561001DACCB /* BPAppDelegate.swift in Sources */,
+				EB671B2F239BE188001DACCB /* KeyedDecodingContainer+Extension.swift in Sources */,
+				EB671AF0239BC561001DACCB /* BPSceneDelegate.swift in Sources */,
+				EB671B2A239BD3C3001DACCB /* BPProductResponse.swift in Sources */,
+				EB671B36239BE696001DACCB /* BPViewController.swift in Sources */,
+				EB671B3B239BE74E001DACCB /* BPDetailReactor.swift in Sources */,
+				EB671B32239BE621001DACCB /* BPNavigationController.swift in Sources */,
+				EB671B1F239BCADD001DACCB /* BPMainViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -514,7 +624,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -568,7 +678,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -596,7 +706,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = io.github.sooakim.Backpackr;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -618,7 +728,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = io.github.sooakim.Backpackr;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
