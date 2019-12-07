@@ -16,7 +16,7 @@ import Foundation
    "seller": "골든팜"
  }
  */
-struct BPProductResponse: Decodable{
+struct BPProduct: Decodable{
     let id: UInt
     let thumbnail: String
     let title: String

@@ -21,7 +21,7 @@ import Foundation
    "description": "\n\n[밀호밀] 원 스트랩 백\n\nmaterial : 코튼 100％\n\ncolor : 베이지, 블랙, 네이비, 카멜\n\n✔️ 내부에 포켓이 생겼습니다😉\n ....."
  }
  */
-struct BPProductDetailResponse: Decodable{
+struct BPProductDetail: Decodable{
     let id: UInt
     let thumbnail: String
     let thumbnails: [String]

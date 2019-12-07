@@ -20,7 +20,7 @@ final class BPMainReactor: Reactor{
     }
     
     struct State {
-        var products: [BPProductResponse] = []
+        var products: [BPProduct] = []
     }
     
     let initialState: BPMainReactor.State = State()
