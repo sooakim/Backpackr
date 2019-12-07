@@ -164,12 +164,9 @@
 				EB671B25239BD304001DACCB /* Model */,
 				EB671B1D239BCAC0001DACCB /* View */,
 				EB671B2D239BE16D001DACCB /* Extensions */,
+				EB671B3E239BF85F001DACCB /* Resources */,
 				EB671AED239BC561001DACCB /* BPAppDelegate.swift */,
 				EB671AEF239BC561001DACCB /* BPSceneDelegate.swift */,
-				EB671AF3239BC562001DACCB /* Assets.xcassets */,
-				EB671B3C239BED4C001DACCB /* Preview Content */,
-				EB671AF8239BC562001DACCB /* LaunchScreen.storyboard */,
-				EB671AFB239BC562001DACCB /* Info.plist */,
 			);
 			path = Backpackr;
 			sourceTree = "<group>";
@@ -255,6 +252,25 @@
 				EB671B3A239BE74E001DACCB /* BPDetailReactor.swift */,
 			);
 			path = Detail;
+			sourceTree = "<group>";
+		};
+		EB671B3E239BF85F001DACCB /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				EB671B3F239BF87C001DACCB /* Storyboard */,
+				EB671AFB239BC562001DACCB /* Info.plist */,
+				EB671B3C239BED4C001DACCB /* Preview Content */,
+				EB671AF3239BC562001DACCB /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		EB671B3F239BF87C001DACCB /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				EB671AF8239BC562001DACCB /* LaunchScreen.storyboard */,
+			);
+			path = Storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -694,11 +710,12 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				BASE_URL = "https://2jt4kq01ij.execute-api.ap-northeast-2.amazonaws.com/prod/";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_ASSET_PATHS = "\"Backpackr/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"Backpackr/Resources/Preview Content\"";
 				DEVELOPMENT_TEAM = SM396Z3QTU;
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = Backpackr/Info.plist;
+				INFOPLIST_FILE = Backpackr/Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -707,6 +724,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
+				TOKEN = 2873aa7856c8cab32d0e9ab6e2537b62;
 			};
 			name = Debug;
 		};
@@ -716,11 +734,12 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				BASE_URL = "https://2jt4kq01ij.execute-api.ap-northeast-2.amazonaws.com/prod/";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_ASSET_PATHS = "\"Backpackr/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"Backpackr/Resources/Preview Content\"";
 				DEVELOPMENT_TEAM = SM396Z3QTU;
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = Backpackr/Info.plist;
+				INFOPLIST_FILE = Backpackr/Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -729,6 +748,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
+				TOKEN = 2873aa7856c8cab32d0e9ab6e2537b62;
 			};
 			name = Release;
 		};
