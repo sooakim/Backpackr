@@ -1,6 +1,9 @@
 PODS:
   - Alamofire (4.9.1)
   - Differentiator (3.1.0)
+  - Kingfisher (5.11.0):
+    - Kingfisher/Core (= 5.11.0)
+  - Kingfisher/Core (5.11.0)
   - Moya (13.0.1):
     - Moya/Core (= 13.0.1)
   - Moya/Core (13.0.1):
@@ -26,6 +29,7 @@ PODS:
   - SnapKit (5.0.1)
 
 DEPENDENCIES:
+  - Kingfisher (~> 5.11)
   - Moya (~> 13.0)
   - Moya/RxSwift (~> 13.0)
   - ReactorKit (~> 1.2)
@@ -40,6 +44,7 @@ SPEC REPOS:
   trunk:
     - Alamofire
     - Differentiator
+    - Kingfisher
     - Moya
     - ReactorKit
     - Result
@@ -53,6 +58,7 @@ SPEC REPOS:
 SPEC CHECKSUMS:
   Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
   Differentiator: be49ca3408f0ecfc761e4c7763d20c62be01b9ad
+  Kingfisher: 4569606189149e19c7d9439f47e885d0679b7a90
   Moya: f4a4b80ff2f8a4ffc208dfb31cd91636622fee6e
   ReactorKit: 8be57f0527ad1ac2963cd5c338274a46a01e57a3
   Result: bd966fac789cc6c1563440b348ab2598cc24d5c7
@@ -63,6 +69,6 @@ SPEC CHECKSUMS:
   RxTest: 3ccb66bfbace0bf7df1c43a7c75d046f8ce60372
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
 
-PODFILE CHECKSUM: 2e4f183683c6bcb33c178cdd646231af0fd3c1f3
+PODFILE CHECKSUM: 67d1466e7c6da1a5ef61f62e2bdc361fe8703731
 
 COCOAPODS: 1.8.4

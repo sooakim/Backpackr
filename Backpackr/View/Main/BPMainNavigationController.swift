@@ -10,5 +10,18 @@ import Foundation
 import UIKit
 
 final class BPMainNavigationController: BPNavigationController{
+    // MARK: UIViewController Lifecycle
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.navigationBar.layer.shadowColor = UIColor(red: 24/255, green: 24/255, blue: 80/255, alpha: 1).cgColor
+        self.navigationBar.layer.shadowOffset = CGSize(width: .zero, height: 2)
+        self.navigationBar.layer.shadowRadius = 4
+        self.navigationBar.layer.shadowOpacity = 0.12
+        self.navigationBar.layer.masksToBounds = false
+    
+        self.navigationBar.barTintColor = .white
+        self.navigationBar.isTranslucent = false
+        self.navigationBar.shadowImage = UIImage()
+    }
 }

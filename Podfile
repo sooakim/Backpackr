@@ -18,6 +18,9 @@ target 'Backpackr' do
   pod 'Moya', '~> 13.0'
   pod 'Moya/RxSwift', '~> 13.0'
   
+  # Image Caching
+  pod 'Kingfisher', '~> 5.11'
+  
   # UI
   pod 'SnapKit', '~> 5.0'
 

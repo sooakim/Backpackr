@@ -18,7 +18,7 @@ class BPAppDelegate: UIResponder, UIApplicationDelegate {
         if #available(iOS 13, *){
             //Do on BPSceneDelegate
         }else {
-            let viewController = BPMainViewController(collectionViewLayout: UICollectionViewFlowLayout())
+            let viewController = BPMainViewController()
             viewController.reactor = BPMainReactor()
             let navigationController = BPMainNavigationController(rootViewController: viewController)
             

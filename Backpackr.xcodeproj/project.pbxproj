@@ -34,6 +34,11 @@
 		EB671B47239C0328001DACCB /* BPProductAPITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB671B46239C0328001DACCB /* BPProductAPITests.swift */; };
 		EB671B4A239C06DE001DACCB /* Products.json in Resources */ = {isa = PBXBuildFile; fileRef = EB671B49239C06DE001DACCB /* Products.json */; };
 		EB671B4C239C0712001DACCB /* Product.json in Resources */ = {isa = PBXBuildFile; fileRef = EB671B4B239C0712001DACCB /* Product.json */; };
+		EB671B4F239CB4CF001DACCB /* BPProductCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB671B4E239CB4CF001DACCB /* BPProductCollectionViewCell.swift */; };
+		EB671B51239CB7D5001DACCB /* BPCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB671B50239CB7D5001DACCB /* BPCollectionViewCell.swift */; };
+		EBDB1269239CCB4600C37A7E /* NotoSansKR-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = EBDB1267239CCB4600C37A7E /* NotoSansKR-Black.otf */; };
+		EBDB126A239CCB4600C37A7E /* NotoSansKR-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = EBDB1268239CCB4600C37A7E /* NotoSansKR-Bold.otf */; };
+		EBDB126C239CCCA600C37A7E /* UIFont+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDB126B239CCCA600C37A7E /* UIFont+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -92,6 +97,11 @@
 		EB671B46239C0328001DACCB /* BPProductAPITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPProductAPITests.swift; sourceTree = "<group>"; };
 		EB671B49239C06DE001DACCB /* Products.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Products.json; sourceTree = "<group>"; };
 		EB671B4B239C0712001DACCB /* Product.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Product.json; sourceTree = "<group>"; };
+		EB671B4E239CB4CF001DACCB /* BPProductCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPProductCollectionViewCell.swift; sourceTree = "<group>"; };
+		EB671B50239CB7D5001DACCB /* BPCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPCollectionViewCell.swift; sourceTree = "<group>"; };
+		EBDB1267239CCB4600C37A7E /* NotoSansKR-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Black.otf"; sourceTree = "<group>"; };
+		EBDB1268239CCB4600C37A7E /* NotoSansKR-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Bold.otf"; sourceTree = "<group>"; };
+		EBDB126B239CCCA600C37A7E /* UIFont+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Extension.swift"; sourceTree = "<group>"; };
 		F02D8817F317C236E5197CC4 /* Pods-Backpackr-BackpackrUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Backpackr-BackpackrUITests.release.xcconfig"; path = "Target Support Files/Pods-Backpackr-BackpackrUITests/Pods-Backpackr-BackpackrUITests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -217,6 +227,7 @@
 				EB671B21239BCB03001DACCB /* BPMainNavigationController.swift */,
 				EB671B1E239BCADD001DACCB /* BPMainViewController.swift */,
 				EB671B23239BCC96001DACCB /* BPMainReactor.swift */,
+				EB671B4E239CB4CF001DACCB /* BPProductCollectionViewCell.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -244,6 +255,7 @@
 			children = (
 				EB671B2E239BE188001DACCB /* KeyedDecodingContainer+Extension.swift */,
 				EB671B43239C00B7001DACCB /* TargetType+Extension.swift */,
+				EBDB126B239CCCA600C37A7E /* UIFont+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -254,6 +266,7 @@
 				EB671B31239BE621001DACCB /* BPNavigationController.swift */,
 				EB671B33239BE672001DACCB /* BPCollectionViewController.swift */,
 				EB671B35239BE696001DACCB /* BPViewController.swift */,
+				EB671B50239CB7D5001DACCB /* BPCollectionViewCell.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -270,6 +283,7 @@
 		EB671B3E239BF85F001DACCB /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				EBDB1266239CCA7000C37A7E /* Font */,
 				EB671B3F239BF87C001DACCB /* Storyboard */,
 				EB671B48239C06AE001DACCB /* SampleData */,
 				EB671AFB239BC562001DACCB /* Info.plist */,
@@ -310,6 +324,15 @@
 				EB671B4B239C0712001DACCB /* Product.json */,
 			);
 			path = SampleData;
+			sourceTree = "<group>";
+		};
+		EBDB1266239CCA7000C37A7E /* Font */ = {
+			isa = PBXGroup;
+			children = (
+				EBDB1267239CCB4600C37A7E /* NotoSansKR-Black.otf */,
+				EBDB1268239CCB4600C37A7E /* NotoSansKR-Bold.otf */,
+			);
+			path = Font;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -422,7 +445,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EBDB126A239CCB4600C37A7E /* NotoSansKR-Bold.otf in Resources */,
 				EB671B3D239BED4D001DACCB /* Preview Content in Resources */,
+				EBDB1269239CCB4600C37A7E /* NotoSansKR-Black.otf in Resources */,
 				EB671B4A239C06DE001DACCB /* Products.json in Resources */,
 				EB671AFA239BC562001DACCB /* LaunchScreen.storyboard in Resources */,
 				EB671B4C239C0712001DACCB /* Product.json in Resources */,
@@ -572,15 +597,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				EB671B34239BE673001DACCB /* BPCollectionViewController.swift in Sources */,
+				EBDB126C239CCCA600C37A7E /* UIFont+Extension.swift in Sources */,
 				EB671B22239BCB03001DACCB /* BPMainNavigationController.swift in Sources */,
 				EB671B24239BCC96001DACCB /* BPMainReactor.swift in Sources */,
 				EB671B2C239BDD54001DACCB /* BPProductDetail.swift in Sources */,
 				EB671B42239BFFB0001DACCB /* BPProductAPI.swift in Sources */,
+				EB671B4F239CB4CF001DACCB /* BPProductCollectionViewCell.swift in Sources */,
 				EB671B28239BD343001DACCB /* BPResponse.swift in Sources */,
 				EB671B44239C00B7001DACCB /* TargetType+Extension.swift in Sources */,
 				EB671B39239BE703001DACCB /* BPDetailViewController.swift in Sources */,
 				EB671AEE239BC561001DACCB /* BPAppDelegate.swift in Sources */,
 				EB671B2F239BE188001DACCB /* KeyedDecodingContainer+Extension.swift in Sources */,
+				EB671B51239CB7D5001DACCB /* BPCollectionViewCell.swift in Sources */,
 				EB671AF0239BC561001DACCB /* BPSceneDelegate.swift in Sources */,
 				EB671B2A239BD3C3001DACCB /* BPProduct.swift in Sources */,
 				EB671B36239BE696001DACCB /* BPViewController.swift in Sources */,

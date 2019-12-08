@@ -12,9 +12,15 @@ import ReactorKit
 import RxSwift
 
 final class BPDetailViewController: BPViewController, View{
-    var disposeBag: DisposeBag = DisposeBag()
+    // MARK: UIViewController Lifecycle
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
     
     // MARK: ReactorKit Lifecycle
+    
+    var disposeBag: DisposeBag = DisposeBag()
     
     func bind(reactor: BPDetailReactor){
         
