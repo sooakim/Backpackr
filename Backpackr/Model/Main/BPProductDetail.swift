@@ -27,10 +27,22 @@ struct BPProductDetail: Decodable{
     let thumbnails: [String]
     let title: String
     let seller: String
-    let costs: String
+    let cost: String
     let discountCost: UInt
     let discountRate: UInt
     let description: String
+    
+    init(){
+        self.id = 0
+        self.thumbnail = ""
+        self.thumbnails = []
+        self.title = ""
+        self.seller = ""
+        self.cost = ""
+        self.discountCost = 0
+        self.discountRate = 0
+        self.description = ""
+    }
     
     init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
@@ -40,7 +52,7 @@ struct BPProductDetail: Decodable{
         self.thumbnails = values.decodeStringArray(forKey: .thumbnails)
         self.title = values.decode(forKey: .title, default: "")
         self.seller = values.decode(forKey: .seller, default: "")
-        self.costs = values.decode(forKey: .costs, default: "")
+        self.cost = values.decode(forKey: .cost, default: "")
         self.discountCost = values.decode(forKey: .discountCost, default: 0)
         self.discountRate = values.decode(forKey: .discountRate, default: 0)
         self.description = values.decode(forKey: .description, default: "")
@@ -48,7 +60,7 @@ struct BPProductDetail: Decodable{
     
     enum CodingKeys: String, CodingKey{
         case id, title,
-            seller, costs,
+            seller, cost,
             discountCost, discountRate,
             description
         case thumbnail = "thumbnail_720"

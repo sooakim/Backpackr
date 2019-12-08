@@ -14,7 +14,7 @@ final class BPMainNavigationController: BPNavigationController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationBar.layer.shadowColor = UIColor(red: 24/255, green: 24/255, blue: 80/255, alpha: 1).cgColor
+        self.navigationBar.layer.shadowColor = UIColor.darkBlueGrey.cgColor
         self.navigationBar.layer.shadowOffset = CGSize(width: .zero, height: 2)
         self.navigationBar.layer.shadowRadius = 4
         self.navigationBar.layer.shadowOpacity = 0.12

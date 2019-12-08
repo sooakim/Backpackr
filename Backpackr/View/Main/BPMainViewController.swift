@@ -28,28 +28,30 @@ final class BPMainViewController: BPViewController, View{
         layout.sectionInset = UIEdgeInsets(top: 24, left: 12, bottom: 24, right: 12)
         layout.minimumLineSpacing = 24
         layout.minimumInteritemSpacing = 7
+        
         let view = UICollectionView(frame: .zero, collectionViewLayout: layout)
         view.backgroundColor = .white
+        view.showsVerticalScrollIndicator = false
         view.register(BPProductCollectionViewCell.self, forCellWithReuseIdentifier: BPMainViewController.CELL_PRODUCT)
         return view
     }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.onInitialLoad.onNext(Void())
+        
         self.navigationItem.titleView = titleImageView
         self.view.addSubview(collectionView)
         
         self.collectionView.snp.makeConstraints{ [unowned self] in
-            $0.leading.equalTo(self.view.snp.leading)
             $0.top.equalTo(self.view.snp.top)
-            $0.trailing.equalTo(self.view.snp.trailing)
+            $0.leading.equalTo(self.view.snp.leading)
             $0.bottom.equalTo(self.view.snp.bottom)
+            $0.trailing.equalTo(self.view.snp.trailing)
         }
         
         self.collectionView.rx.setDelegate(self)
             .disposed(by: self.disposeBag)
-        
-        self.onInitialLoad.onNext(Void())
     }
     
     // MARK: ReactorKit Lifecycle
@@ -59,11 +61,23 @@ final class BPMainViewController: BPViewController, View{
     func bind(reactor: BPMainReactor){
         self.onInitialLoad.asObserver()
             .map{
-                BPMainReactor.Action.InitalLoad
+                BPMainReactor.Action.initialLoad
             }
             .bind(to: reactor.action)
             .disposed(by: self.disposeBag)
-
+        self.collectionView.rx.itemSelected
+            .subscribe(onNext: { [weak self, weak reactor] (indexPath: IndexPath) in
+                guard let `self` = self else { return }
+                self.collectionView.deselectItem(at: indexPath, animated: false)
+                
+                guard let product = reactor?.currentState.products[indexPath.row] else{ return }
+                let detailViewController = BPDetailViewController()
+                detailViewController.reactor = BPDetailReactor()
+                detailViewController.productId = product.id
+                detailViewController.modalPresentationStyle = .fullScreen
+                self.present(detailViewController, animated: true)
+            })
+            .disposed(by: self.disposeBag)
         
         reactor.state.map{ $0.products }
             .bind(to: self.collectionView.rx.items(cellIdentifier: BPMainViewController.CELL_PRODUCT)) {
@@ -81,7 +95,7 @@ extension BPMainViewController: UICollectionViewDelegateFlowLayout{
             - flowLayout.minimumInteritemSpacing
         return CGSize(
             width: width / 2,
-            height: width + 4 + 40 + 20
+            height: width / 2 + 4 + 40 + 20
         )
     }
 }

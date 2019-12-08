@@ -13,8 +13,8 @@ import Moya
 
 final class BPMainReactor: Reactor{
     enum Action{
-        case InitalLoad
-        case LoadMore
+        case initialLoad
+        case loadMore
     }
     
     enum Mutation{
@@ -29,12 +29,12 @@ final class BPMainReactor: Reactor{
     
     func mutate(action: BPMainReactor.Action) -> Observable<BPMainReactor.Mutation> {
         switch action{
-        case .InitalLoad:
+        case .initialLoad:
             return getProducts()
                 .map{ (products: [BPProduct]) in
                     Mutation.setProducts(products)
                 }
-        case .LoadMore:
+        case .loadMore:
             return getProducts()
                 .map{ (products: [BPProduct]) in
                     Mutation.setProducts(products)
@@ -52,7 +52,7 @@ final class BPMainReactor: Reactor{
     }
     
     private lazy var productAPI: MoyaProvider<BPProductAPI> = {
-        return MoyaProvider<BPProductAPI>()
+        return MoyaProvider<BPProductAPI>(plugins: [NetworkLoggerPlugin(verbose: true)])
     }()
     
     private func getProducts() -> Observable<[BPProduct]>{

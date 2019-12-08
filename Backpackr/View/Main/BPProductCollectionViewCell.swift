@@ -27,8 +27,8 @@ class BPProductCollectionViewCell: BPCollectionViewCell<BPProduct>{
         view.numberOfLines = 2
         view.lineBreakMode = .byTruncatingTail
         view.adjustsFontSizeToFitWidth = false
-        view.textColor = UIColor(red: 20/255, green: 20/255, blue: 40/255, alpha: 1)
-        view.font = UIFont.notoSans(.black, size: 14)
+        view.textColor = .dark
+        view.font = UIFont.notoSansFont(ofSize: 14, weight: .black)
         return view
     }()
     private lazy var sellerLabel: UILabel = {
@@ -36,8 +36,8 @@ class BPProductCollectionViewCell: BPCollectionViewCell<BPProduct>{
         view.numberOfLines = 1
         view.lineBreakMode = .byTruncatingTail
         view.adjustsFontSizeToFitWidth = false
-        view.textColor = UIColor(red: 171/255, green: 171/255, blue: 196/255, alpha: 1)
-        view.font = UIFont.notoSans(.bold, size: 14)
+        view.textColor = .blueyGrey
+        view.font = UIFont.notoSansFont(ofSize: 14, weight: .bold)
         return view
     }()
     private lazy var stackView: UIStackView = {
@@ -52,6 +52,7 @@ class BPProductCollectionViewCell: BPCollectionViewCell<BPProduct>{
         self.stackView.addArrangedSubview(emptyView)
         self.stackView.addArrangedSubview(titleLabel)
         self.stackView.addArrangedSubview(sellerLabel)
+        self.stackView.addArrangedSubview(UIView())
         self.contentView.addSubview(stackView)
         
         self.thumbnailImageView.snp.makeConstraints{ [unowned self] in
@@ -61,10 +62,10 @@ class BPProductCollectionViewCell: BPCollectionViewCell<BPProduct>{
             $0.height.equalTo(4)
         }
         self.stackView.snp.makeConstraints{ [unowned self] in
-            $0.leading.equalTo(self.contentView.snp.leading)
             $0.top.equalTo(self.contentView.snp.top)
-            $0.trailing.equalTo(self.contentView.snp.trailing)
+            $0.leading.equalTo(self.contentView.snp.leading)
             $0.bottom.equalTo(self.contentView.snp.bottom)
+            $0.trailing.equalTo(self.contentView.snp.trailing)
         }
     }
     

@@ -12,6 +12,7 @@ target 'Backpackr' do
   pod 'ReactorKit', '~> 1.2'
   pod 'RxSwift', '~> 4.5'
   pod 'RxCocoa', '~> 4.5'
+  pod 'RxGesture', '~> 2.2'
   pod 'RxDataSources', '~> 3.1'
   
   # Networking
@@ -23,6 +24,7 @@ target 'Backpackr' do
   
   # UI
   pod 'SnapKit', '~> 5.0'
+  pod 'KRWordWrapLabel', '~> 2.1'
 
   target 'BackpackrTests' do
     inherit! :search_paths

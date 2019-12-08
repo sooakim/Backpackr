@@ -11,7 +11,7 @@ import Moya
 
 enum BPProductAPI{
     case products
-    case product(id: Int)
+    case product(id: UInt)
 }
 
 extension BPProductAPI: TargetType{
@@ -27,7 +27,7 @@ extension BPProductAPI: TargetType{
         case .products:
             return "/products"
         case .product(let id):
-            return "/product/\(id)"
+            return "/products/\(id)"
         }
     }
     
