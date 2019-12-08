@@ -46,6 +46,8 @@
 		EBDB1278239D25A800C37A7E /* BPProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDB1277239D25A800C37A7E /* BPProgressView.swift */; };
 		EBDB127A239D414700C37A7E /* UILabel+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDB1279239D414700C37A7E /* UILabel+Extension.swift */; };
 		EBDB1280239D545B00C37A7E /* AppleSDGothicNeo.ttc in Resources */ = {isa = PBXBuildFile; fileRef = EBDB127F239D545B00C37A7E /* AppleSDGothicNeo.ttc */; };
+		EBDB1284239D5BB600C37A7E /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = EBDB1286239D5BB600C37A7E /* Localizable.strings */; };
+		EBDB1289239D5C4400C37A7E /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDB1288239D5C4400C37A7E /* String+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -116,6 +118,9 @@
 		EBDB1277239D25A800C37A7E /* BPProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPProgressView.swift; sourceTree = "<group>"; };
 		EBDB1279239D414700C37A7E /* UILabel+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extension.swift"; sourceTree = "<group>"; };
 		EBDB127F239D545B00C37A7E /* AppleSDGothicNeo.ttc */ = {isa = PBXFileReference; lastKnownFileType = file; path = AppleSDGothicNeo.ttc; sourceTree = "<group>"; };
+		EBDB1285239D5BB600C37A7E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		EBDB1287239D5BC700C37A7E /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Localizable.strings; sourceTree = "<group>"; };
+		EBDB1288239D5C4400C37A7E /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		F02D8817F317C236E5197CC4 /* Pods-Backpackr-BackpackrUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Backpackr-BackpackrUITests.release.xcconfig"; path = "Target Support Files/Pods-Backpackr-BackpackrUITests/Pods-Backpackr-BackpackrUITests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -275,6 +280,7 @@
 				EBDB1273239D07F500C37A7E /* UIStackView+Extension.swift */,
 				EBDB1275239D0F9300C37A7E /* UIColor+Extension.swift */,
 				EBDB1279239D414700C37A7E /* UILabel+Extension.swift */,
+				EBDB1288239D5C4400C37A7E /* String+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -302,6 +308,7 @@
 		EB671B3E239BF85F001DACCB /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				EBDB1281239D5B6A00C37A7E /* Localizable */,
 				EBDB1266239CCA7000C37A7E /* Font */,
 				EB671B3F239BF87C001DACCB /* Storyboard */,
 				EB671B48239C06AE001DACCB /* SampleData */,
@@ -362,6 +369,14 @@
 				EBDB1277239D25A800C37A7E /* BPProgressView.swift */,
 			);
 			path = Custom;
+			sourceTree = "<group>";
+		};
+		EBDB1281239D5B6A00C37A7E /* Localizable */ = {
+			isa = PBXGroup;
+			children = (
+				EBDB1286239D5BB600C37A7E /* Localizable.strings */,
+			);
+			path = Localizable;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -456,6 +471,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ko,
 			);
 			mainGroup = EB671AE1239BC561001DACCB;
 			productRefGroup = EB671AEB239BC561001DACCB /* Products */;
@@ -479,6 +495,7 @@
 				EBDB1269239CCB4600C37A7E /* NotoSansKR-Black.otf in Resources */,
 				EBDB1280239D545B00C37A7E /* AppleSDGothicNeo.ttc in Resources */,
 				EB671B4A239C06DE001DACCB /* Products.json in Resources */,
+				EBDB1284239D5BB600C37A7E /* Localizable.strings in Resources */,
 				EB671AFA239BC562001DACCB /* LaunchScreen.storyboard in Resources */,
 				EB671B4C239C0712001DACCB /* Product.json in Resources */,
 				EB671AF4239BC562001DACCB /* Assets.xcassets in Resources */,
@@ -635,6 +652,7 @@
 				EB671B2C239BDD54001DACCB /* BPProductDetail.swift in Sources */,
 				EB671B42239BFFB0001DACCB /* BPProductAPI.swift in Sources */,
 				EB671B4F239CB4CF001DACCB /* BPProductCollectionViewCell.swift in Sources */,
+				EBDB1289239D5C4400C37A7E /* String+Extension.swift in Sources */,
 				EBDB127A239D414700C37A7E /* UILabel+Extension.swift in Sources */,
 				EB671B28239BD343001DACCB /* BPResponse.swift in Sources */,
 				EBDB1274239D07F500C37A7E /* UIStackView+Extension.swift in Sources */,
@@ -695,6 +713,15 @@
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
+		EBDB1286239D5BB600C37A7E /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				EBDB1285239D5BB600C37A7E /* en */,
+				EBDB1287239D5BC700C37A7E /* ko */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
@@ -702,6 +729,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -762,6 +790,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";

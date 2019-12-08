@@ -102,7 +102,7 @@ final class BPDetailViewController: BPViewController, ReactorKit.View{
     }()
     private lazy var warningLabel: UILabel = {
         let view = UILabel()
-        view.text = "부랑구마켓은 통신판매중개자이며 통신판매의 당사자가 아닙니다. 따라서 부랑구마켓은 상품 거래정보 및 거래에 대하여 책임을 지지 않습니다."
+        view.text = "warning".localized
         view.textColor = .coolGrey
         view.font = UIFont.notoSansFont(ofSize: 12, weight: .bold)
         view.numberOfLines = 0
@@ -361,10 +361,10 @@ final class BPDetailViewController: BPViewController, ReactorKit.View{
                 .foregroundColor: UIColor.dark
             ]
         ))
-        if attributedString.mutableString.contains("원"){
-            let range = attributedString.mutableString.range(of: "원")
+        if attributedString.mutableString.contains("unit_krw".localized){
+            let range = attributedString.mutableString.range(of: "unit_krw".localized)
             attributedString.replaceCharacters(in: range, with: NSAttributedString(
-                string: "원",
+                string: "unit_krw".localized,
                 attributes: [
                     .font: UIFont.sdGothicNeoFont(ofSize: 20, weight: .extraBold),
                     .foregroundColor: UIColor.dark,
@@ -376,7 +376,7 @@ final class BPDetailViewController: BPViewController, ReactorKit.View{
         if(discountCost > 0){
             attributedString.append(NSAttributedString(string: "  "))
             attributedString.append(NSAttributedString(
-                string: "\(discountCost)원",
+                string: String(format: "%d%@", discountCost, "unit_krw".localized),
                 attributes: [
                     .font: UIFont.sdGothicNeoFont(ofSize: 20, weight: .extraBold),
                     .foregroundColor: UIColor.blueyGrey,
