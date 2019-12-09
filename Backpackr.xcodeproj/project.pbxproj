@@ -44,10 +44,12 @@
 		EBDB1274239D07F500C37A7E /* UIStackView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDB1273239D07F500C37A7E /* UIStackView+Extension.swift */; };
 		EBDB1276239D0F9300C37A7E /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDB1275239D0F9300C37A7E /* UIColor+Extension.swift */; };
 		EBDB1278239D25A800C37A7E /* BPProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDB1277239D25A800C37A7E /* BPProgressView.swift */; };
-		EBDB127A239D414700C37A7E /* UILabel+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDB1279239D414700C37A7E /* UILabel+Extension.swift */; };
 		EBDB1280239D545B00C37A7E /* AppleSDGothicNeo.ttc in Resources */ = {isa = PBXBuildFile; fileRef = EBDB127F239D545B00C37A7E /* AppleSDGothicNeo.ttc */; };
 		EBDB1284239D5BB600C37A7E /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = EBDB1286239D5BB600C37A7E /* Localizable.strings */; };
 		EBDB1289239D5C4400C37A7E /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDB1288239D5C4400C37A7E /* String+Extension.swift */; };
+		EBDB128D239E54FB00C37A7E /* BPLoadingReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDB128C239E54FB00C37A7E /* BPLoadingReusableView.swift */; };
+		EBDB128F239E557D00C37A7E /* BPCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDB128E239E557D00C37A7E /* BPCollectionReusableView.swift */; };
+		EBDB1291239E86ED00C37A7E /* Bool+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDB1290239E86ED00C37A7E /* Bool+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -116,11 +118,13 @@
 		EBDB1273239D07F500C37A7E /* UIStackView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+Extension.swift"; sourceTree = "<group>"; };
 		EBDB1275239D0F9300C37A7E /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		EBDB1277239D25A800C37A7E /* BPProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPProgressView.swift; sourceTree = "<group>"; };
-		EBDB1279239D414700C37A7E /* UILabel+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extension.swift"; sourceTree = "<group>"; };
 		EBDB127F239D545B00C37A7E /* AppleSDGothicNeo.ttc */ = {isa = PBXFileReference; lastKnownFileType = file; path = AppleSDGothicNeo.ttc; sourceTree = "<group>"; };
 		EBDB1285239D5BB600C37A7E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		EBDB1287239D5BC700C37A7E /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Localizable.strings; sourceTree = "<group>"; };
 		EBDB1288239D5C4400C37A7E /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
+		EBDB128C239E54FB00C37A7E /* BPLoadingReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPLoadingReusableView.swift; sourceTree = "<group>"; };
+		EBDB128E239E557D00C37A7E /* BPCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPCollectionReusableView.swift; sourceTree = "<group>"; };
+		EBDB1290239E86ED00C37A7E /* Bool+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bool+Extension.swift"; sourceTree = "<group>"; };
 		F02D8817F317C236E5197CC4 /* Pods-Backpackr-BackpackrUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Backpackr-BackpackrUITests.release.xcconfig"; path = "Target Support Files/Pods-Backpackr-BackpackrUITests/Pods-Backpackr-BackpackrUITests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -248,6 +252,7 @@
 				EB671B1E239BCADD001DACCB /* BPMainViewController.swift */,
 				EB671B23239BCC96001DACCB /* BPMainReactor.swift */,
 				EB671B4E239CB4CF001DACCB /* BPProductCollectionViewCell.swift */,
+				EBDB128C239E54FB00C37A7E /* BPLoadingReusableView.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -279,8 +284,8 @@
 				EBDB126E239CF72700C37A7E /* UIView+Extension.swift */,
 				EBDB1273239D07F500C37A7E /* UIStackView+Extension.swift */,
 				EBDB1275239D0F9300C37A7E /* UIColor+Extension.swift */,
-				EBDB1279239D414700C37A7E /* UILabel+Extension.swift */,
 				EBDB1288239D5C4400C37A7E /* String+Extension.swift */,
+				EBDB1290239E86ED00C37A7E /* Bool+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -292,6 +297,7 @@
 				EB671B33239BE672001DACCB /* BPCollectionViewController.swift */,
 				EB671B35239BE696001DACCB /* BPViewController.swift */,
 				EB671B50239CB7D5001DACCB /* BPCollectionViewCell.swift */,
+				EBDB128E239E557D00C37A7E /* BPCollectionReusableView.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -644,6 +650,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EBDB1291239E86ED00C37A7E /* Bool+Extension.swift in Sources */,
 				EB671B34239BE673001DACCB /* BPCollectionViewController.swift in Sources */,
 				EBDB126C239CCCA600C37A7E /* UIFont+Extension.swift in Sources */,
 				EB671B22239BCB03001DACCB /* BPMainNavigationController.swift in Sources */,
@@ -653,7 +660,7 @@
 				EB671B42239BFFB0001DACCB /* BPProductAPI.swift in Sources */,
 				EB671B4F239CB4CF001DACCB /* BPProductCollectionViewCell.swift in Sources */,
 				EBDB1289239D5C4400C37A7E /* String+Extension.swift in Sources */,
-				EBDB127A239D414700C37A7E /* UILabel+Extension.swift in Sources */,
+				EBDB128F239E557D00C37A7E /* BPCollectionReusableView.swift in Sources */,
 				EB671B28239BD343001DACCB /* BPResponse.swift in Sources */,
 				EBDB1274239D07F500C37A7E /* UIStackView+Extension.swift in Sources */,
 				EBDB1278239D25A800C37A7E /* BPProgressView.swift in Sources */,
@@ -661,6 +668,7 @@
 				EB671B39239BE703001DACCB /* BPDetailViewController.swift in Sources */,
 				EB671AEE239BC561001DACCB /* BPAppDelegate.swift in Sources */,
 				EB671B2F239BE188001DACCB /* KeyedDecodingContainer+Extension.swift in Sources */,
+				EBDB128D239E54FB00C37A7E /* BPLoadingReusableView.swift in Sources */,
 				EB671B51239CB7D5001DACCB /* BPCollectionViewCell.swift in Sources */,
 				EB671AF0239BC561001DACCB /* BPSceneDelegate.swift in Sources */,
 				EB671B2A239BD3C3001DACCB /* BPProduct.swift in Sources */,

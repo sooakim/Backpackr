@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import RxDataSources
 
 /**
  {
@@ -34,5 +35,20 @@ struct BPProduct: Decodable{
     enum CodingKeys: String, CodingKey{
         case id, title, seller
         case thumbnail = "thumbnail_520"
+    }
+}
+
+extension BPProduct: Equatable{
+    static func == (lhs: BPProduct, rhs: BPProduct) -> Bool{
+        return lhs.id == rhs.id &&
+            lhs.thumbnail == rhs.thumbnail &&
+            lhs.title == rhs.title &&
+            lhs.seller == rhs.seller
+    }
+}
+
+extension BPProduct: IdentifiableType{
+    var identity: UInt{
+        return id
     }
 }

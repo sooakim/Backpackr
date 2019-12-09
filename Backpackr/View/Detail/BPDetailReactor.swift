@@ -59,5 +59,6 @@ final class BPDetailReactor: Reactor{
             .map{ (response: BPResponse<BPProductDetail>) in
                 response.body.first!
             }.asObservable()
+            .catchErrorJustReturn(BPProductDetail())
     }
 }

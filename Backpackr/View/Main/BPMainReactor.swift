@@ -18,11 +18,15 @@ final class BPMainReactor: Reactor{
     }
     
     enum Mutation{
-        case setProducts([BPProduct])
+        case setProducts([BPProduct], nextPage: UInt)
+        case appendProducts([BPProduct], nextPage: UInt)
+        case setLoadingNextPage(Bool)
     }
     
     struct State {
         var products: [BPProduct] = []
+        var nextPage: UInt = 1
+        var isLoadingNextPage: Bool = false
     }
     
     let initialState: BPMainReactor.State = State()
@@ -31,22 +35,41 @@ final class BPMainReactor: Reactor{
         switch action{
         case .initialLoad:
             return getProducts()
-                .map{ (products: [BPProduct]) in
-                    Mutation.setProducts(products)
+                .takeUntil(self.action.filter{ $0 == .initialLoad })
+                .map{ (products: [BPProduct], nextPage: UInt) in
+                    Mutation.setProducts(products, nextPage: nextPage)
                 }
         case .loadMore:
-            return getProducts()
-                .map{ (products: [BPProduct]) in
-                    Mutation.setProducts(products)
-                }
+            guard !self.currentState.isLoadingNextPage else{
+                return .empty()
+            }
+            return Observable.concat(
+                .just(Mutation.setLoadingNextPage(true)),
+                self.getProducts(inPage: currentState.nextPage)
+                    .takeUntil(self.action.filter{ $0 == .initialLoad })
+                    .map{ (products: [BPProduct], nextPage: UInt) in
+                        Mutation.appendProducts(products, nextPage: nextPage)
+                    }
+            )
         }
     }
     
     func reduce(state: BPMainReactor.State, mutation: BPMainReactor.Mutation) -> BPMainReactor.State {
         switch mutation{
-        case .setProducts(let products):
+        case .setProducts(let products, let nextPage):
             var newState = state
             newState.products = products
+            newState.nextPage = nextPage
+            return newState
+        case .appendProducts(let products, let nextPage):
+            var newState = state
+            newState.products.append(contentsOf: products)
+            newState.nextPage = nextPage
+            newState.isLoadingNextPage = false
+            return newState
+        case .setLoadingNextPage(let isLoadingNextPage):
+            var newState = state
+            newState.isLoadingNextPage = isLoadingNextPage
             return newState
         }
     }
@@ -55,12 +78,13 @@ final class BPMainReactor: Reactor{
         return MoyaProvider<BPProductAPI>(plugins: [NetworkLoggerPlugin(verbose: true)])
     }()
     
-    private func getProducts() -> Observable<[BPProduct]>{
-        return self.productAPI.rx.request(.products)
+    private func getProducts(inPage page: UInt = 1) -> Observable<([BPProduct], UInt)>{
+        return self.productAPI.rx.request(.products(page: page))
             .map{ (response: Response) in
                 try JSONDecoder().decode(BPResponse<BPProduct>.self, from: response.data)
             }.map{ (response: BPResponse<BPProduct>) in
-                response.body
+                (response.body, page + 1)
             }.asObservable()
+            .catchErrorJustReturn(([], page))
     }
 }

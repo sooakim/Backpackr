@@ -11,7 +11,7 @@ import UIKit
 import SnapKit
 import Kingfisher
 
-class BPProductCollectionViewCell: BPCollectionViewCell<BPProduct>{
+final class BPProductCollectionViewCell: BPCollectionViewCell<BPProduct>{
     private lazy var thumbnailImageView: UIImageView = {
         let view = UIImageView()
         view.layer.cornerRadius = 14
@@ -19,7 +19,7 @@ class BPProductCollectionViewCell: BPCollectionViewCell<BPProduct>{
         view.backgroundColor = .darkGray
         return view
     }()
-    private lazy var emptyView: UIView = {
+    private lazy var spaceView1: UIView = {
         return UIView()
     }()
     private lazy var titleLabel: UILabel = {
@@ -40,27 +40,32 @@ class BPProductCollectionViewCell: BPCollectionViewCell<BPProduct>{
         view.font = UIFont.notoSansFont(ofSize: 14, weight: .bold)
         return view
     }()
+    private lazy var spaceView2: UIView = {
+       return UIView()
+    }()
     private lazy var stackView: UIStackView = {
         let view = UIStackView()
         view.alignment = .fill
         view.axis = .vertical
+        view.spacing = 0
         return view
     }()
     
     override func setUp() {
         self.stackView.addArrangedSubview(thumbnailImageView)
-        self.stackView.addArrangedSubview(emptyView)
+        self.stackView.addArrangedSubview(spaceView1)
         self.stackView.addArrangedSubview(titleLabel)
         self.stackView.addArrangedSubview(sellerLabel)
-        self.stackView.addArrangedSubview(UIView())
+        self.stackView.addArrangedSubview(spaceView2)
         self.contentView.addSubview(stackView)
         
         self.thumbnailImageView.snp.makeConstraints{ [unowned self] in
             $0.width.equalTo(self.thumbnailImageView.snp.height)
         }
-        self.emptyView.snp.makeConstraints{
+        self.spaceView1.snp.makeConstraints{
             $0.height.equalTo(4)
         }
+        self.spaceView2.setContentHuggingPriority(.defaultLow, for: .vertical)
         self.stackView.snp.makeConstraints{ [unowned self] in
             $0.top.equalTo(self.contentView.snp.top)
             $0.leading.equalTo(self.contentView.snp.leading)
@@ -73,5 +78,15 @@ class BPProductCollectionViewCell: BPCollectionViewCell<BPProduct>{
         self.thumbnailImageView.kf.setImage(with: URL(string: model.thumbnail)!)
         self.titleLabel.text = model.title
         self.sellerLabel.text = model.seller
+    }
+    
+    static func size(width: CGFloat, model: BPProduct) -> CGSize{
+        return CGSize(
+            width: width,
+            height: width
+                + 4
+                + ceil(UIFont.notoSansFont(ofSize: 14, weight: .black).lineHeight) * 2
+                + ceil(UIFont.notoSansFont(ofSize: 14, weight: .bold).lineHeight)
+        )
     }
 }

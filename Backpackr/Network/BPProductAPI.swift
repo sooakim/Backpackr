@@ -10,7 +10,7 @@ import Foundation
 import Moya
 
 enum BPProductAPI{
-    case products
+    case products(page: UInt = 1)
     case product(id: UInt)
 }
 
@@ -33,7 +33,9 @@ extension BPProductAPI: TargetType{
     
     var task: Task {
         switch self{
-        case .products, .product:
+        case .products(let page):
+            return .requestParameters(parameters: ["page": page], encoding: URLEncoding.default)
+        case .product:
             return .requestPlain
         }
     }

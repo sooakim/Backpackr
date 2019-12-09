@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import RxDataSources
 
 extension String{
     var localized: String{
