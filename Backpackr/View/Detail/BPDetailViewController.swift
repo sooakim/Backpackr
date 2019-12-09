@@ -317,7 +317,8 @@ final class BPDetailViewController: BPViewController, ReactorKit.View{
         product.thumbnails.map{ (thumbnail: String) -> UIImageView in
             let view = UIImageView()
             view.backgroundColor = .darkGray
-            view.contentMode = .scaleAspectFit
+            view.contentMode = .scaleAspectFill
+            view.clipsToBounds = true
             view.kf.setImage(with: URL(string: thumbnail)!)
             return view
         }.forEach{ (childView: UIImageView) in

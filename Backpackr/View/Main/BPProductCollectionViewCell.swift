@@ -15,9 +15,9 @@ final class BPProductCollectionViewCell: BPCollectionViewCell<BPProduct>{
     private lazy var thumbnailImageView: UIImageView = {
         let view = UIImageView()
         view.layer.cornerRadius = 14
-        view.clipsToBounds = true
         view.backgroundColor = .darkGray
         view.contentMode = .scaleAspectFill
+        view.clipsToBounds = true
         return view
     }()
     private lazy var spaceView1: UIView = {
