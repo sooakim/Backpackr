@@ -17,6 +17,7 @@ final class BPProductCollectionViewCell: BPCollectionViewCell<BPProduct>{
         view.layer.cornerRadius = 14
         view.clipsToBounds = true
         view.backgroundColor = .darkGray
+        view.contentMode = .scaleAspectFill
         return view
     }()
     private lazy var spaceView1: UIView = {

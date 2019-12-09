@@ -317,12 +317,13 @@ final class BPDetailViewController: BPViewController, ReactorKit.View{
         product.thumbnails.map{ (thumbnail: String) -> UIImageView in
             let view = UIImageView()
             view.backgroundColor = .darkGray
+            view.contentMode = .scaleAspectFit
             view.kf.setImage(with: URL(string: thumbnail)!)
             return view
         }.forEach{ (childView: UIImageView) in
             self.thumbnailStackView.addArrangedSubview(childView)
             childView.snp.makeConstraints{
-                $0.height.equalTo(self.thumbnailStackView.snp.height)
+                $0.height.equalToSuperview()
                 $0.height.equalTo(childView.snp.width)
             }
         }
