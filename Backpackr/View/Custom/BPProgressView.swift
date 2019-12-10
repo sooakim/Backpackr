@@ -88,7 +88,6 @@ class BPProgressView: UIView{
         )
         context.closePath()
         context.fillPath()
-        
     }
 }
 

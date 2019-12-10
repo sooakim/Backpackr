@@ -28,8 +28,8 @@ struct BPProductDetail: Decodable{
     let title: String
     let seller: String
     let cost: String
-    let discountCost: UInt
-    let discountRate: UInt
+    let discountCost: String?
+    let discountRate: String?
     let description: String
     
     init(){
@@ -39,8 +39,8 @@ struct BPProductDetail: Decodable{
         self.title = ""
         self.seller = ""
         self.cost = ""
-        self.discountCost = 0
-        self.discountRate = 0
+        self.discountCost = nil
+        self.discountRate = nil
         self.description = ""
     }
     
@@ -53,16 +53,17 @@ struct BPProductDetail: Decodable{
         self.title = values.decode(forKey: .title, default: "")
         self.seller = values.decode(forKey: .seller, default: "")
         self.cost = values.decode(forKey: .cost, default: "")
-        self.discountCost = values.decode(forKey: .discountCost, default: 0)
-        self.discountRate = values.decode(forKey: .discountRate, default: 0)
+        self.discountCost = values.decode(forKey: .discountCost)
+        self.discountRate = values.decode(forKey: .discountRate)
         self.description = values.decode(forKey: .description, default: "")
     }
     
     enum CodingKeys: String, CodingKey{
         case id, title,
             seller, cost,
-            discountCost, discountRate,
             description
+        case discountCost = "discount_cost"
+        case discountRate = "discount_rate"
         case thumbnail = "thumbnail_720"
         case thumbnails = "thumbnail_list_320"
     }

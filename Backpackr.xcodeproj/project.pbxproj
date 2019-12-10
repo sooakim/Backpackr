@@ -50,6 +50,9 @@
 		EBDB128D239E54FB00C37A7E /* BPLoadingReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDB128C239E54FB00C37A7E /* BPLoadingReusableView.swift */; };
 		EBDB128F239E557D00C37A7E /* BPCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDB128E239E557D00C37A7E /* BPCollectionReusableView.swift */; };
 		EBDB1291239E86ED00C37A7E /* Bool+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDB1290239E86ED00C37A7E /* Bool+Extension.swift */; };
+		EBDB1294239E94D400C37A7E /* BPDetailPresentAnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDB1293239E94D400C37A7E /* BPDetailPresentAnimationController.swift */; };
+		EBDB1296239FE5AC00C37A7E /* UICollectionView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDB1295239FE5AC00C37A7E /* UICollectionView+Extension.swift */; };
+		EBDB129823A011C900C37A7E /* CGRect+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDB129723A011C900C37A7E /* CGRect+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -125,6 +128,9 @@
 		EBDB128C239E54FB00C37A7E /* BPLoadingReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPLoadingReusableView.swift; sourceTree = "<group>"; };
 		EBDB128E239E557D00C37A7E /* BPCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPCollectionReusableView.swift; sourceTree = "<group>"; };
 		EBDB1290239E86ED00C37A7E /* Bool+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bool+Extension.swift"; sourceTree = "<group>"; };
+		EBDB1293239E94D400C37A7E /* BPDetailPresentAnimationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPDetailPresentAnimationController.swift; sourceTree = "<group>"; };
+		EBDB1295239FE5AC00C37A7E /* UICollectionView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Extension.swift"; sourceTree = "<group>"; };
+		EBDB129723A011C900C37A7E /* CGRect+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGRect+Extension.swift"; sourceTree = "<group>"; };
 		F02D8817F317C236E5197CC4 /* Pods-Backpackr-BackpackrUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Backpackr-BackpackrUITests.release.xcconfig"; path = "Target Support Files/Pods-Backpackr-BackpackrUITests/Pods-Backpackr-BackpackrUITests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -207,6 +213,7 @@
 				EB671B25239BD304001DACCB /* Model */,
 				EB671B40239BFF90001DACCB /* Network */,
 				EB671B1D239BCAC0001DACCB /* View */,
+				EBDB1292239E94A800C37A7E /* Util */,
 				EB671B2D239BE16D001DACCB /* Extensions */,
 				EB671B3E239BF85F001DACCB /* Resources */,
 				EB671AED239BC561001DACCB /* BPAppDelegate.swift */,
@@ -286,6 +293,8 @@
 				EBDB1275239D0F9300C37A7E /* UIColor+Extension.swift */,
 				EBDB1288239D5C4400C37A7E /* String+Extension.swift */,
 				EBDB1290239E86ED00C37A7E /* Bool+Extension.swift */,
+				EBDB1295239FE5AC00C37A7E /* UICollectionView+Extension.swift */,
+				EBDB129723A011C900C37A7E /* CGRect+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -383,6 +392,22 @@
 				EBDB1286239D5BB600C37A7E /* Localizable.strings */,
 			);
 			path = Localizable;
+			sourceTree = "<group>";
+		};
+		EBDB1292239E94A800C37A7E /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				EBDB129923A0126900C37A7E /* Anim */,
+			);
+			path = Util;
+			sourceTree = "<group>";
+		};
+		EBDB129923A0126900C37A7E /* Anim */ = {
+			isa = PBXGroup;
+			children = (
+				EBDB1293239E94D400C37A7E /* BPDetailPresentAnimationController.swift */,
+			);
+			path = Anim;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -651,6 +676,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EBDB1291239E86ED00C37A7E /* Bool+Extension.swift in Sources */,
+				EBDB1294239E94D400C37A7E /* BPDetailPresentAnimationController.swift in Sources */,
 				EB671B34239BE673001DACCB /* BPCollectionViewController.swift in Sources */,
 				EBDB126C239CCCA600C37A7E /* UIFont+Extension.swift in Sources */,
 				EB671B22239BCB03001DACCB /* BPMainNavigationController.swift in Sources */,
@@ -658,6 +684,7 @@
 				EB671B24239BCC96001DACCB /* BPMainReactor.swift in Sources */,
 				EB671B2C239BDD54001DACCB /* BPProductDetail.swift in Sources */,
 				EB671B42239BFFB0001DACCB /* BPProductAPI.swift in Sources */,
+				EBDB129823A011C900C37A7E /* CGRect+Extension.swift in Sources */,
 				EB671B4F239CB4CF001DACCB /* BPProductCollectionViewCell.swift in Sources */,
 				EBDB1289239D5C4400C37A7E /* String+Extension.swift in Sources */,
 				EBDB128F239E557D00C37A7E /* BPCollectionReusableView.swift in Sources */,
@@ -668,6 +695,7 @@
 				EB671B39239BE703001DACCB /* BPDetailViewController.swift in Sources */,
 				EB671AEE239BC561001DACCB /* BPAppDelegate.swift in Sources */,
 				EB671B2F239BE188001DACCB /* KeyedDecodingContainer+Extension.swift in Sources */,
+				EBDB1296239FE5AC00C37A7E /* UICollectionView+Extension.swift in Sources */,
 				EBDB128D239E54FB00C37A7E /* BPLoadingReusableView.swift in Sources */,
 				EB671B51239CB7D5001DACCB /* BPCollectionViewCell.swift in Sources */,
 				EB671AF0239BC561001DACCB /* BPSceneDelegate.swift in Sources */,

@@ -40,15 +40,15 @@ final class BPDetailViewController: BPViewController, ReactorKit.View{
     }()
     private lazy var thumbnailScrollView: UIScrollView = {
         let view = UIScrollView()
-        view.layer.cornerRadius = 26
-        view.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
-        view.layer.masksToBounds = true
         view.isPagingEnabled = true
         view.showsHorizontalScrollIndicator = false
         return view
     }()
     private lazy var thumbnailView: UIView = {
         let view = UIView()
+        view.layer.cornerRadius = 24
+        view.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+        view.layer.masksToBounds = true
         return view
     }()
     private lazy var sellerLabel: UILabel = {
@@ -340,13 +340,13 @@ final class BPDetailViewController: BPViewController, ReactorKit.View{
         self.descriptionLabel.text = product.description
     }
     
-    private func priceAttributedString(discountRate: UInt, cost: String, discountCost: UInt) -> NSAttributedString{
+    private func priceAttributedString(discountRate: String?, cost: String, discountCost: String?) -> NSAttributedString{
         let attributedString = NSMutableAttributedString()
         
         //discountRate part, show only if greater than 0
-        if(discountRate > 0){
+        if let discountRate = discountRate{
             attributedString.append(NSAttributedString(
-                string: "-\(discountRate)%",
+                string: discountRate,
                 attributes: [
                     .font: UIFont.sfProtextFont(ofSize: 20, weight: .black),
                     .foregroundColor: UIColor.coralPink,
@@ -375,10 +375,10 @@ final class BPDetailViewController: BPViewController, ReactorKit.View{
         }
         
         //discountCost part, show only if greater than 0
-        if(discountCost > 0){
+        if let discountCost = discountCost{
             attributedString.append(NSAttributedString(string: "  "))
             attributedString.append(NSAttributedString(
-                string: String(format: "%d%@", discountCost, "unit_krw".localized),
+                string: discountCost,
                 attributes: [
                     .font: UIFont.sdGothicNeoFont(ofSize: 20, weight: .extraBold),
                     .foregroundColor: UIColor.blueyGrey,
@@ -388,5 +388,11 @@ final class BPDetailViewController: BPViewController, ReactorKit.View{
         }
         
         return attributedString
+    }
+}
+
+extension BPDetailViewController: SharedElementTransition{
+    func sharedElement() -> UIView? {
+        return self.thumbnailView
     }
 }

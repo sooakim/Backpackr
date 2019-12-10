@@ -45,6 +45,10 @@ final class BPMainViewController: BPViewController, View{
         return view
     }()
     
+    override var preferredStatusBarStyle: UIStatusBarStyle{
+        return .default
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.onInitialLoad.onNext(Void())
@@ -179,13 +183,14 @@ final class BPMainViewController: BPViewController, View{
         self.collectionView.rx.itemSelected
             .subscribe(onNext: { [weak self, weak reactor] (indexPath: IndexPath) in
                 guard let `self` = self else { return }
-                self.collectionView.deselectItem(at: indexPath, animated: false)
+                self.collectionView.deselectItems(exclusionAt: indexPath, animated: false)
                 
                 guard let product = reactor?.currentState.products[indexPath.row] else{ return }
                 let detailViewController = BPDetailViewController()
                 detailViewController.reactor = BPDetailReactor()
                 detailViewController.productId = product.id
                 detailViewController.modalPresentationStyle = .fullScreen
+                detailViewController.transitioningDelegate = self
                 self.present(detailViewController, animated: true)
             })
             .disposed(by: self.disposeBag)
@@ -221,5 +226,26 @@ extension BPMainViewController: UICollectionViewDelegateFlowLayout{
         }else{
             return .zero
         }
+    }
+}
+
+extension BPMainViewController: UIViewControllerTransitioningDelegate{
+    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        return BPDetailPresentAnimationController()
+    }
+    
+//    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+//        <#code#>
+//    }
+}
+
+extension BPMainViewController: SharedElementTransition{
+    func sharedElement() -> UIView? {
+        guard
+            let selectedIndexPath = self.collectionView.indexPathsForSelectedItems?.first,
+            let selectedCell = self.collectionView.cellForItem(at: selectedIndexPath) as? SharedElementTransition else{
+            return nil
+        }
+        return selectedCell.sharedElement()
     }
 }

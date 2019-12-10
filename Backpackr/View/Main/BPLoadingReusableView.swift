@@ -25,13 +25,13 @@ final class BPLoadingReuseableView: BPCollectionResuableView{
         let anim = CABasicAnimation(keyPath: "transform.rotation")
         anim.fromValue = 0
         anim.toValue = Double.pi * 2 * 2
-        anim.duration = 0.5
-        anim.timingFunction = CAMediaTimingFunction(name: .easeInEaseOut)
+        anim.duration = 1.5
+        anim.timingFunction = CAMediaTimingFunction(name: .easeOut)
         anim.isRemovedOnCompletion = false
         
         let animGroup = CAAnimationGroup()
         animGroup.animations = [anim]
-        animGroup.duration = 1
+        animGroup.duration = 2.0
         animGroup.repeatCount = .infinity
         return animGroup
     }()

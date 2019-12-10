@@ -13,6 +13,10 @@ extension KeyedDecodingContainer{
         return (try? decode(T.self, forKey: key)) ?? `default`
     }
     
+    func decode<T: Decodable>(forKey key: KeyedDecodingContainer.Key) -> T?{
+        return (try? decode(T.self, forKey: key))
+    }
+    
     func decodeArray<T: Decodable>(forKey key: KeyedDecodingContainer.Key, `default`: [T] = []) -> [T]{
         return (try? decode([T].self, forKey: key)) ?? `default`
     }

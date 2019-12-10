@@ -67,11 +67,8 @@ final class BPProductCollectionViewCell: BPCollectionViewCell<BPProduct>{
             $0.height.equalTo(4)
         }
         self.spaceView2.setContentHuggingPriority(.defaultLow, for: .vertical)
-        self.stackView.snp.makeConstraints{ [unowned self] in
-            $0.top.equalTo(self.contentView.snp.top)
-            $0.leading.equalTo(self.contentView.snp.leading)
-            $0.bottom.equalTo(self.contentView.snp.bottom)
-            $0.trailing.equalTo(self.contentView.snp.trailing)
+        self.stackView.snp.makeConstraints{
+            $0.edges.equalToSuperview()
         }
     }
     
@@ -89,5 +86,11 @@ final class BPProductCollectionViewCell: BPCollectionViewCell<BPProduct>{
                 + ceil(UIFont.notoSansFont(ofSize: 14, weight: .black).lineHeight) * 2
                 + ceil(UIFont.notoSansFont(ofSize: 14, weight: .bold).lineHeight)
         )
+    }
+}
+
+extension BPProductCollectionViewCell: SharedElementTransition{
+    func sharedElement() -> UIView? {
+         return self.thumbnailImageView
     }
 }
