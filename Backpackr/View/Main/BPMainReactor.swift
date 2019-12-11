@@ -80,11 +80,11 @@ final class BPMainReactor: Reactor{
     
     private func getProducts(inPage page: UInt = 1) -> Observable<([BPProduct], UInt)>{
         return self.productAPI.rx.request(.products(page: page))
-            .map{ (response: Response) in
-                try JSONDecoder().decode(BPResponse<BPProduct>.self, from: response.data)
-            }.map{ (response: BPResponse<BPProduct>) in
+            .decodeJson()
+            .map{ (response: BPResponse<BPProduct>) in
                 (response.body, page + 1)
-            }.asObservable()
+            }
             .catchErrorJustReturn(([], page))
+            .asObservable()
     }
 }

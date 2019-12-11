@@ -157,6 +157,8 @@ final class BPDetailViewController: BPViewController, ReactorKit.View{
         return view
     }()
     
+    private var isPurchaseButtonAnimated: Bool = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.onInitialLoad.onNext(Void())
@@ -198,10 +200,10 @@ final class BPDetailViewController: BPViewController, ReactorKit.View{
             $0.height.equalTo(4)
         }
         self.purchaseButton.snp.makeConstraints{ [unowned self] in
-            $0.leading.equalTo(self.view.safeAreaLayoutGuide.snp.leading).inset(24)
-            $0.bottom.equalTo(self.view.safeAreaLayoutGuide.snp.bottom).inset(30)
-            $0.trailing.equalTo(self.view.safeAreaLayoutGuide.snp.trailing).inset(24)
             $0.height.equalTo(52)
+            $0.leading.equalTo(self.view.safeAreaLayoutGuide.snp.leading).inset(24)
+            $0.bottom.equalTo(self.view.safeAreaLayoutGuide.snp.bottom).inset(-1 * (30 + 52))
+            $0.trailing.equalTo(self.view.safeAreaLayoutGuide.snp.trailing).inset(24)
         }
         self.dismissImageView.snp.makeConstraints{ [unowned self] in
             $0.top.equalTo(self.dismissView.snp.top).inset(13)
@@ -293,6 +295,24 @@ final class BPDetailViewController: BPViewController, ReactorKit.View{
         .disposed(by: self.disposeBag)
     }
     
+    private func animatePurchaseButton(){
+        guard isPurchaseButtonAnimated == false else{ return }
+        self.isPurchaseButtonAnimated = true
+        
+//        UIView.animate(
+//            withDuration: 1,
+//            delay: 0,
+//            usingSpringWithDamping: 0.65,
+//            initialSpringVelocity: 0,
+//            options: .curveEaseOut,
+//            animations: {
+//            self.purchaseButton.snp.updateConstraints{
+//                $0.bottom.equalTo(self.view.safeAreaLayoutGuide.snp.bottom).inset(30)
+//            }
+//            self.purchaseButton.superview?.layoutIfNeeded()
+//        })
+    }
+    
     // MARK: ReactorKit Lifecycle
     
     var disposeBag: DisposeBag = DisposeBag()
@@ -338,6 +358,8 @@ final class BPDetailViewController: BPViewController, ReactorKit.View{
             discountCost: product.discountCost
         )
         self.descriptionLabel.text = product.description
+        
+        self.animatePurchaseButton()
     }
     
     private func priceAttributedString(discountRate: String?, cost: String, discountCost: String?) -> NSAttributedString{

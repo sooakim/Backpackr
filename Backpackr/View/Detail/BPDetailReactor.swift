@@ -53,12 +53,13 @@ final class BPDetailReactor: Reactor{
      
     private func getProduct(id: UInt) -> Observable<BPProductDetail>{
         return self.productAPI.rx.request(.product(id: id))
-            .map{ (response: Response) in
-                try JSONDecoder().decode(BPResponse<BPProductDetail>.self, from: response.data)
-            }
+            .decodeJson()
             .map{ (response: BPResponse<BPProductDetail>) in
                 response.body.first!
-            }.asObservable()
+            }
             .catchErrorJustReturn(BPProductDetail())
+            .asObservable()
     }
 }
+
+
