@@ -96,12 +96,12 @@ final class BPMainViewController: BPViewController, View{
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        super.viewDidLoad()
+        super.viewDidAppear(animated)
         self.startLoadingAnim()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        super.viewDidLoad()
+        super.viewWillDisappear(animated)
         self.stopLoadingAnim()
     }
     
