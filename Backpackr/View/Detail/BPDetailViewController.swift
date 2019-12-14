@@ -17,9 +17,7 @@ final class BPDetailViewController: BPViewController, ReactorKit.View{
     // MARK: UIViewController Lifecycle
     
     var productId: UInt = 0
-    override var preferredStatusBarStyle: UIStatusBarStyle{
-        return .lightContent
-    }
+    
     private var onInitialLoad: PublishSubject<Void> = PublishSubject<Void>()
     
     private lazy var dismissView: UIView = {
@@ -57,7 +55,7 @@ final class BPDetailViewController: BPViewController, ReactorKit.View{
         view.font = UIFont.notoSansFont(ofSize: 12, weight: .black)
         view.lineBreakMode = .byTruncatingTail
         view.adjustsFontSizeToFitWidth = false
-        view.numberOfLines = 1
+        view.numberOfLines = 0
         return view
     }()
     private lazy var spaceView1: UIView = {
@@ -152,15 +150,29 @@ final class BPDetailViewController: BPViewController, ReactorKit.View{
         view.setTitle("구매하기", for: .normal)
         return view
     }()
+    private lazy var animView: UIView = {
+        let view = BPView()
+        view.interceptEvent = false
+        return view
+    }()
     private lazy var progressView: BPProgressView = {
         let view = BPProgressView()
         return view
     }()
     
     private var isPurchaseButtonAnimated: Bool = false
+    private var isStatusBarHidden: Bool = false
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle{
+        return .lightContent
+    }
+    override var prefersStatusBarHidden: Bool{
+        return self.isStatusBarHidden
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.view.backgroundColor = .black
         self.onInitialLoad.onNext(Void())
         
         self.dismissView.addSubview(dismissImageView)
@@ -188,28 +200,24 @@ final class BPDetailViewController: BPViewController, ReactorKit.View{
         self.rootStackView.addArrangedSubview(contentView)
         self.rootScrollView.addSubview(rootStackView)
         
+        self.animView.addSubview(purchaseButton)
+        
         self.view.addSubview(rootScrollView)
         self.view.addSubview(dismissView)
-        self.view.addSubview(purchaseButton)
+        self.view.addSubview(animView)
         
-        
-        self.progressView.snp.makeConstraints{ [unowned self] in
-            $0.leading.equalTo(self.thumbnailView.snp.leading).inset(24)
-            $0.bottom.equalTo(self.thumbnailView.snp.bottom).inset(24)
-            $0.trailing.equalTo(self.thumbnailView.snp.trailing).inset(24)
+        self.progressView.snp.makeConstraints{
+            $0.leading.bottom.trailing.equalToSuperview().inset(24)
             $0.height.equalTo(4)
         }
         self.purchaseButton.snp.makeConstraints{ [unowned self] in
+            $0.leading.equalTo(self.animView.safeAreaLayoutGuide.snp.leading).inset(24)
+            $0.bottom.equalTo(self.animView.snp.bottom).inset(-52)
+            $0.trailing.equalTo(self.animView.safeAreaLayoutGuide.snp.trailing).inset(24)
             $0.height.equalTo(52)
-            $0.leading.equalTo(self.view.safeAreaLayoutGuide.snp.leading).inset(24)
-            $0.bottom.equalTo(self.view.safeAreaLayoutGuide.snp.bottom).inset(-1 * (30 + 52))
-            $0.trailing.equalTo(self.view.safeAreaLayoutGuide.snp.trailing).inset(24)
         }
-        self.dismissImageView.snp.makeConstraints{ [unowned self] in
-            $0.top.equalTo(self.dismissView.snp.top).inset(13)
-            $0.leading.equalTo(self.dismissView.snp.leading).inset(13)
-            $0.bottom.equalTo(self.dismissView.snp.bottom).inset(13)
-            $0.trailing.equalTo(self.dismissView.snp.trailing).inset(13)
+        self.dismissImageView.snp.makeConstraints{
+            $0.edges.equalToSuperview().inset(13)
         }
         self.dismissView.snp.makeConstraints{ [unowned self] in
             $0.top.equalTo(self.view.safeAreaLayoutGuide.snp.top).inset(16)
@@ -217,18 +225,11 @@ final class BPDetailViewController: BPViewController, ReactorKit.View{
             $0.width.equalTo(40)
             $0.width.equalTo(self.dismissView.snp.height)
         }
-        self.thumbnailStackView.snp.makeConstraints{ [unowned self] in
-            $0.top.equalTo(self.thumbnailScrollView.snp.top)
-            $0.leading.equalTo(self.thumbnailScrollView.snp.leading)
-            $0.bottom.equalTo(self.thumbnailScrollView.snp.bottom)
-            $0.trailing.equalTo(self.thumbnailScrollView.snp.trailing)
-            $0.height.equalTo(self.thumbnailScrollView.snp.height)
+        self.thumbnailStackView.snp.makeConstraints{
+            $0.edges.height.equalToSuperview()
         }
-        self.thumbnailScrollView.snp.makeConstraints{ [unowned self] in
-            $0.top.equalTo(self.thumbnailView.snp.top)
-            $0.leading.equalTo(self.thumbnailView.snp.leading)
-            $0.bottom.equalTo(self.thumbnailView.snp.bottom)
-            $0.trailing.equalTo(self.thumbnailView.snp.trailing)
+        self.thumbnailScrollView.snp.makeConstraints{
+            $0.edges.equalToSuperview()
         }
         self.thumbnailView.snp.makeConstraints{ [unowned self] in
             $0.width.equalTo(self.thumbnailView.snp.height)
@@ -251,31 +252,23 @@ final class BPDetailViewController: BPViewController, ReactorKit.View{
         self.spaceView5.snp.makeConstraints{
             $0.height.equalTo(40)
         }
-        self.warningLabel.snp.makeConstraints{ [unowned self] in
-            $0.top.equalTo(self.warningView.snp.top).inset(16)
-            $0.leading.equalTo(self.warningView.snp.leading).inset(18)
-            $0.bottom.equalTo(self.warningView.snp.bottom).inset(16)
-            $0.trailing.equalTo(self.warningView.snp.trailing).inset(18)
+        self.warningLabel.snp.makeConstraints{
+            $0.top.bottom.equalToSuperview().inset(16)
+            $0.leading.trailing.equalToSuperview().inset(18)
         }
-        self.contentStackView.snp.makeConstraints{ [unowned self] in
-            $0.top.equalTo(self.contentView.snp.top)
-            $0.leading.equalTo(self.contentView.snp.leading)
-            $0.bottom.equalTo(self.contentView.snp.bottom)
-            $0.trailing.equalTo(self.contentView.snp.trailing)
+        self.contentStackView.snp.makeConstraints{
+            $0.edges.equalToSuperview()
         }
-        self.rootStackView.snp.makeConstraints{ [unowned self] in
-            $0.top.equalTo(self.rootScrollView.snp.top)
-            $0.leading.equalTo(self.rootScrollView.snp.leading)
-            $0.bottom.equalTo(self.rootScrollView.snp.bottom)
-            $0.trailing.equalTo(self.rootScrollView.snp.trailing)
-            $0.width.equalTo(self.rootScrollView.snp.width)
+        self.rootStackView.snp.makeConstraints{
+            $0.edges.width.equalToSuperview()
         }
-        self.rootScrollView.snp.makeConstraints{ [unowned self] in
-            $0.top.equalTo(self.view.snp.top)
-            $0.leading.equalTo(self.view.snp.leading)
-            $0.bottom.equalTo(self.view.snp.bottom)
-            $0.trailing.equalTo(self.view.snp.trailing)
+        self.rootScrollView.snp.makeConstraints{
+            $0.edges.equalToSuperview()
         }
+        self.animView.snp.makeConstraints{
+            $0.edges.equalToSuperview()
+        }
+        
         
         self.dismissView.rx.tapGesture()
             .subscribe(onNext: { [weak self] _ in
@@ -283,34 +276,33 @@ final class BPDetailViewController: BPViewController, ReactorKit.View{
                 self.dismiss(animated: true, completion: nil)
             })
             .disposed(by: self.disposeBag)
-        
-        
-        self.thumbnailScrollView.rx.didScroll.asObservable()
+
+        self.thumbnailScrollView.rx.didScroll
             .map{ [weak self] in
                 guard let `self` = self else{ return 0 }
                 return Float((self.thumbnailScrollView.contentOffset.x + self.thumbnailScrollView.bounds.width)
                     / self.thumbnailScrollView.contentSize.width)
-        }
-        .bind(to: self.progressView.rx.progress)
-        .disposed(by: self.disposeBag)
+            }
+            .bind(to: self.progressView.rx.progress)
+            .disposed(by: self.disposeBag)
     }
     
     private func animatePurchaseButton(){
         guard isPurchaseButtonAnimated == false else{ return }
         self.isPurchaseButtonAnimated = true
         
-//        UIView.animate(
-//            withDuration: 1,
-//            delay: 0,
-//            usingSpringWithDamping: 0.65,
-//            initialSpringVelocity: 0,
-//            options: .curveEaseOut,
-//            animations: {
-//            self.purchaseButton.snp.updateConstraints{
-//                $0.bottom.equalTo(self.view.safeAreaLayoutGuide.snp.bottom).inset(30)
-//            }
-//            self.purchaseButton.superview?.layoutIfNeeded()
-//        })
+        UIView.animate(
+            withDuration: 1,
+            delay: 0.5,
+            usingSpringWithDamping: 0.65,
+            initialSpringVelocity: 0,
+            options: [.curveEaseOut],
+            animations: {
+            self.purchaseButton.snp.updateConstraints{
+                $0.bottom.equalTo(self.animView.snp.bottom).inset(30 + self.animView.safeAreaInsets.bottom)
+            }
+            self.purchaseButton.superview?.layoutIfNeeded()
+        })
     }
     
     // MARK: ReactorKit Lifecycle
@@ -326,10 +318,12 @@ final class BPDetailViewController: BPViewController, ReactorKit.View{
         .disposed(by: self.disposeBag)
         
         reactor.state.map{ $0.product }
+            .skip(1)
+            .distinctUntilChanged()
             .bind{ [weak self] (product: BPProductDetail) in
                 guard let `self` = self else{ return }
                 self.bind(product: product)
-        }.disposed(by: self.disposeBag)
+            }.disposed(by: self.disposeBag)
     }
     
     private func bind(product: BPProductDetail){
@@ -348,7 +342,7 @@ final class BPDetailViewController: BPViewController, ReactorKit.View{
                 $0.height.equalTo(childView.snp.width)
             }
         }
-        
+
         self.progressView.progress = 1 / Float(product.thumbnails.count)
         self.sellerLabel.text = product.seller
         self.titleLabel.text = product.title
@@ -365,7 +359,7 @@ final class BPDetailViewController: BPViewController, ReactorKit.View{
     private func priceAttributedString(discountRate: String?, cost: String, discountCost: String?) -> NSAttributedString{
         let attributedString = NSMutableAttributedString()
         
-        //discountRate part, show only if greater than 0
+        //discountRate part
         if let discountRate = discountRate{
             attributedString.append(NSAttributedString(
                 string: discountRate,
@@ -396,7 +390,7 @@ final class BPDetailViewController: BPViewController, ReactorKit.View{
             ))
         }
         
-        //discountCost part, show only if greater than 0
+        //discountCost part
         if let discountCost = discountCost{
             attributedString.append(NSAttributedString(string: "  "))
             attributedString.append(NSAttributedString(

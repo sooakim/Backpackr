@@ -46,7 +46,14 @@ final class BPMainViewController: BPViewController, View{
     }()
     
     override var preferredStatusBarStyle: UIStatusBarStyle{
-        return .default
+        if #available(iOS 13, *){
+            return .darkContent
+        }else{
+            return .default
+        }
+    }
+    override var prefersStatusBarHidden: Bool{
+        return false
     }
     
     override func viewDidLoad() {
@@ -56,11 +63,8 @@ final class BPMainViewController: BPViewController, View{
         self.navigationItem.titleView = titleImageView
         self.view.addSubview(collectionView)
         
-        self.collectionView.snp.makeConstraints{ [unowned self] in
-            $0.top.equalTo(self.view.snp.top)
-            $0.leading.equalTo(self.view.snp.leading)
-            $0.bottom.equalTo(self.view.snp.bottom)
-            $0.trailing.equalTo(self.view.snp.trailing)
+        self.collectionView.snp.makeConstraints{
+            $0.edges.equalToSuperview()
         }
         
         self.collectionView.rx.setDelegate(self)
@@ -233,10 +237,6 @@ extension BPMainViewController: UIViewControllerTransitioningDelegate{
     func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         return BPDetailPresentAnimationController()
     }
-    
-//    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-//        <#code#>
-//    }
 }
 
 extension BPMainViewController: SharedElementTransition{

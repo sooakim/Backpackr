@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import RxDataSources
 
 /**
  {
@@ -66,5 +67,25 @@ struct BPProductDetail: Decodable{
         case discountRate = "discount_rate"
         case thumbnail = "thumbnail_720"
         case thumbnails = "thumbnail_list_320"
+    }
+}
+
+extension BPProductDetail: Equatable{
+    static func == (lhs: BPProductDetail, rhs: BPProductDetail) -> Bool{
+        return lhs.id == rhs.id &&
+            lhs.thumbnail == rhs.thumbnail &&
+            lhs.thumbnails == rhs.thumbnails &&
+            lhs.title == rhs.title &&
+            lhs.seller == rhs.seller &&
+            lhs.cost == rhs.cost &&
+            lhs.discountCost == rhs.discountCost &&
+            lhs.discountRate == rhs.discountRate &&
+            lhs.description == rhs.description
+    }
+}
+
+extension BPProductDetail: IdentifiableType{
+    var identity: UInt{
+        return id
     }
 }

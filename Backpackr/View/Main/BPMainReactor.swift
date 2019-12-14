@@ -75,7 +75,7 @@ final class BPMainReactor: Reactor{
     }
     
     private lazy var productAPI: MoyaProvider<BPProductAPI> = {
-        return MoyaProvider<BPProductAPI>(plugins: [NetworkLoggerPlugin(verbose: true)])
+        return MoyaProvider<BPProductAPI>(/*plugins: [NetworkLoggerPlugin(verbose: true)]*/)
     }()
     
     private func getProducts(inPage page: UInt = 1) -> Observable<([BPProduct], UInt)>{

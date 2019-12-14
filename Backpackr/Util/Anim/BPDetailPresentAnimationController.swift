@@ -15,13 +15,14 @@ protocol SharedElementTransition{
 
 final class BPDetailPresentAnimationController: NSObject, UIViewControllerAnimatedTransitioning{
     func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
-        return 0.4
+        return 0.65
     }
     
     func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
         guard
             let fromViewController = transitionContext.viewController(forKey: .from) as? UINavigationController,
             let sourceViewController = fromViewController.children.first,
+            let sourceCollectionView = sourceViewController.view.subviews.first,
             let toViewController = transitionContext.viewController(forKey: .to),
             let sourceView = (sourceViewController as? SharedElementTransition)?.sharedElement() as? UIImageView,
             let toView = (toViewController as? SharedElementTransition)?.sharedElement() else{
@@ -33,15 +34,17 @@ final class BPDetailPresentAnimationController: NSObject, UIViewControllerAnimat
         //make fake view to transite from sourceViewController to toViewController
         let transitionView = UIImageView()
         transitionView.frame = containerView.convert(sourceView.frame, from: sourceView.superview!.superview!)
-        transitionView.layer.cornerRadius = sourceView.layer.cornerRadius
         transitionView.backgroundColor = sourceView.backgroundColor
+        transitionView.clipsToBounds = sourceView.clipsToBounds
         transitionView.contentMode = sourceView.contentMode
-        transitionView.clipsToBounds = true
+        transitionView.layer.cornerRadius = sourceView.layer.cornerRadius
+        transitionView.layer.masksToBounds = true
         transitionView.image = sourceView.image
         
         //set sourceViewController background color to toViewController's background color
-        let sourceBackgroundColor = sourceViewController.view.backgroundColor
-        sourceViewController.view.backgroundColor = toViewController.view.backgroundColor
+        let sourceBackgroundColor = sourceCollectionView.backgroundColor
+        sourceCollectionView.backgroundColor = toViewController.view.backgroundColor
+        
         //show source & from ViewController
         sourceViewController.view.alpha = 1
         fromViewController.view.alpha = 1
@@ -63,27 +66,27 @@ final class BPDetailPresentAnimationController: NSObject, UIViewControllerAnimat
             options: .calculationModeLinear,
             animations: {
                 UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 1/3) {
+                    //change position center to center of target location, and match corner radius
                     transitionView.frame.center = finalFrame.center
+                    transitionView.layer.cornerRadius = toView.layer.cornerRadius
                     
+                    //fade out background
                     fromViewController.view.alpha = 0
                     sourceViewController.view.alpha = 0
-                    
-                    transitionView.layer.cornerRadius = toView.layer.cornerRadius
-                    transitionView.layer.maskedCorners = toView.layer.maskedCorners
-                    transitionView.layer.masksToBounds = toView.layer.masksToBounds
                 }
                 UIView.addKeyframe(withRelativeStartTime: 1/3, relativeDuration: 1) {
+                    //ㅋoom to target size
                     transitionView.frame = finalFrame
                 }
             },
             completion: { _ in
                 //recover source & from ViewController, original sourceView
-                sourceViewController.view.backgroundColor = sourceBackgroundColor
+                sourceCollectionView.backgroundColor = sourceBackgroundColor
                 sourceViewController.view.alpha = 1
                 fromViewController.view.alpha = 1
                 sourceView.isHidden = false
                 
-                //remove take view
+                //remove fake view
                 transitionView.removeFromSuperview()
                 
                 //show toViewController and finish transition

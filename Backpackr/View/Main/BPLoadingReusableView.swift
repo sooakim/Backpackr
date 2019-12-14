@@ -42,8 +42,8 @@ final class BPLoadingReuseableView: BPCollectionResuableView{
         
         self.indicatorImageView.snp.makeConstraints{ [unowned self] in
             $0.top.equalToSuperview().inset(42)
-            $0.bottom.equalToSuperview().inset(42)
-            $0.center.equalToSuperview()
+            $0.bottom.equalToSuperview().inset(34)
+            $0.centerX.equalToSuperview()
             $0.width.equalTo(20)
             $0.width.equalTo(self.indicatorImageView.snp.height)
         }
@@ -67,7 +67,7 @@ final class BPLoadingReuseableView: BPCollectionResuableView{
     static func size(width: CGFloat) -> CGSize{
         return CGSize(
             width: width,
-            height: 42 + 20 + 42
+            height: 42 + 20 + 34
         )
     }
 }

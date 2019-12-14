@@ -14,10 +14,14 @@ import Kingfisher
 final class BPProductCollectionViewCell: BPCollectionViewCell<BPProduct>{
     private lazy var thumbnailImageView: UIImageView = {
         let view = UIImageView()
-        view.layer.cornerRadius = 14
         view.backgroundColor = .darkGray
         view.contentMode = .scaleAspectFill
+        view.layer.cornerRadius = 14
         view.clipsToBounds = true
+        return view
+    }()
+    private lazy var thumbnailView: UIView = {
+        let view = UIView()
         return view
     }()
     private lazy var spaceView1: UIView = {
@@ -53,15 +57,20 @@ final class BPProductCollectionViewCell: BPCollectionViewCell<BPProduct>{
     }()
     
     override func setUp() {
-        self.stackView.addArrangedSubview(thumbnailImageView)
+        self.thumbnailView.addSubview(thumbnailImageView)
+        
+        self.stackView.addArrangedSubview(thumbnailView)
         self.stackView.addArrangedSubview(spaceView1)
         self.stackView.addArrangedSubview(titleLabel)
         self.stackView.addArrangedSubview(sellerLabel)
         self.stackView.addArrangedSubview(spaceView2)
         self.contentView.addSubview(stackView)
         
-        self.thumbnailImageView.snp.makeConstraints{ [unowned self] in
-            $0.width.equalTo(self.thumbnailImageView.snp.height)
+        self.thumbnailImageView.snp.makeConstraints{
+            $0.edges.equalToSuperview()
+        }
+        self.thumbnailView.snp.makeConstraints{ [unowned self] in
+             $0.width.equalTo(self.thumbnailView.snp.height)
         }
         self.spaceView1.snp.makeConstraints{
             $0.height.equalTo(4)
