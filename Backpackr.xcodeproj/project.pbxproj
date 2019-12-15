@@ -61,6 +61,7 @@
 		EBDB12B723A51B3B00C37A7E /* BPMainReactorSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDB12B623A51B3B00C37A7E /* BPMainReactorSpec.swift */; };
 		EBDB12BA23A6A7BD00C37A7E /* BPDetailViewControllerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDB12B923A6A7BD00C37A7E /* BPDetailViewControllerSpec.swift */; };
 		EBDB12BC23A6A80200C37A7E /* BPDetailReactorSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDB12BB23A6A80200C37A7E /* BPDetailReactorSpec.swift */; };
+		EBDB12BE23A6B51500C37A7E /* ObservableType+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDB12BD23A6B51500C37A7E /* ObservableType+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -147,6 +148,7 @@
 		EBDB12B623A51B3B00C37A7E /* BPMainReactorSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPMainReactorSpec.swift; sourceTree = "<group>"; };
 		EBDB12B923A6A7BD00C37A7E /* BPDetailViewControllerSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPDetailViewControllerSpec.swift; sourceTree = "<group>"; };
 		EBDB12BB23A6A80200C37A7E /* BPDetailReactorSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPDetailReactorSpec.swift; sourceTree = "<group>"; };
+		EBDB12BD23A6B51500C37A7E /* ObservableType+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ObservableType+Extension.swift"; sourceTree = "<group>"; };
 		F02D8817F317C236E5197CC4 /* Pods-Backpackr-BackpackrUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Backpackr-BackpackrUITests.release.xcconfig"; path = "Target Support Files/Pods-Backpackr-BackpackrUITests/Pods-Backpackr-BackpackrUITests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -315,6 +317,7 @@
 				EBDB1295239FE5AC00C37A7E /* UICollectionView+Extension.swift */,
 				EBDB129723A011C900C37A7E /* CGRect+Extension.swift */,
 				EBDB129A23A1206F00C37A7E /* PrimitiveSequence+Extension.swift */,
+				EBDB12BD23A6B51500C37A7E /* ObservableType+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -774,6 +777,7 @@
 				EBDB1296239FE5AC00C37A7E /* UICollectionView+Extension.swift in Sources */,
 				EBDB128D239E54FB00C37A7E /* BPLoadingReusableView.swift in Sources */,
 				EB671B51239CB7D5001DACCB /* BPCollectionViewCell.swift in Sources */,
+				EBDB12BE23A6B51500C37A7E /* ObservableType+Extension.swift in Sources */,
 				EB671AF0239BC561001DACCB /* BPSceneDelegate.swift in Sources */,
 				EB671B2A239BD3C3001DACCB /* BPProduct.swift in Sources */,
 				EB671B36239BE696001DACCB /* BPViewController.swift in Sources */,

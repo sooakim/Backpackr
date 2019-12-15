@@ -74,9 +74,10 @@ final class BPMainViewController: BPViewController, FactoryModule{
         return view
     }()
 
+    private var isScrollingDown: Bool = false
     private var onInitialLoad: PublishSubject<Void> = PublishSubject()
     private var dataSource: RxCollectionViewSectionedAnimatedDataSource<AnimatableSectionModel<Bool, BPProduct>>!
-    
+
     override var preferredStatusBarStyle: UIStatusBarStyle{
         if #available(iOS 13, *){
             return .darkContent
@@ -100,6 +101,15 @@ final class BPMainViewController: BPViewController, FactoryModule{
         }
         
         self.collectionView.rx.setDelegate(self)
+            .disposed(by: self.disposeBag)
+        self.collectionView.rx.contentOffset
+            .withPrevious(startWith: .zero)
+            .map{ (lhs: CGPoint, rhs: CGPoint) in
+                lhs.y < rhs.y
+            }
+            .subscribe(onNext: { (isScrollingDown: Bool) in
+                self.isScrollingDown = isScrollingDown
+            })
             .disposed(by: self.disposeBag)
         
         if #available(iOS 13, *){
@@ -231,15 +241,15 @@ extension BPMainViewController: ReactorKit.View{
         
         self.collectionView.rx.willDisplayCell
             .filter{ [weak self] (cell: UICollectionViewCell, indexPath: IndexPath) in
-                guard let `self` = self else{ return false }
+                guard let `self` = self, self.isScrollingDown else{ return false }
                 return indexPath.row
                     == (self.collectionView.numberOfItems(inSection: 0) - BPMainViewController.LOAD_MORE_DISTANCE)
-        }
-        .map{ _ in
-            BPMainReactor.Action.loadMore
-        }
-        .bind(to: reactor.action)
-        .disposed(by: self.disposeBag)
+            }
+            .map{ _ in
+                BPMainReactor.Action.loadMore
+            }
+            .bind(to: reactor.action)
+            .disposed(by: self.disposeBag)
         
         self.collectionView.rx.willDisplaySupplementaryView
             .filter{ (_, elementKind: String, _) in
