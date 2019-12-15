@@ -8,8 +8,26 @@
 
 import Foundation
 import UIKit
+import Pure
 
-final class BPMainNavigationController: BPNavigationController{
+final class BPMainNavigationController: BPNavigationController, FactoryModule{
+    // MARK: Dependency Injection
+    struct Dependency{
+        let mainViewControllerFactory: BPMainViewController.Factory
+    }
+    
+    struct Payload{
+        
+    }
+    
+    init(dependency: Dependency, payload: Payload){
+        super.init(rootViewController: dependency.mainViewControllerFactory.create(payload: .init()))
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     // MARK: UIViewController Lifecycle
     
     override func viewDidLoad() {

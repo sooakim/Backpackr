@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class BPCollectionViewCell<T>: UICollectionViewCell{
+class BPCollectionViewCell: UICollectionViewCell{
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         self.setUp()
@@ -21,10 +21,6 @@ class BPCollectionViewCell<T>: UICollectionViewCell{
     }
     
     func setUp(){
-        
-    }
-    
-    func bind(model: T){
         
     }
 }

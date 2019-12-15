@@ -12,15 +12,44 @@ import ReactorKit
 import RxSwift
 import RxCocoa
 import RxDataSources
+import Pure
 
-final class BPMainViewController: BPViewController, View{
-    // MARK: UIViewController Lifecycle
+final class BPMainViewController: BPViewController, FactoryModule{
+    // MARK: Dependency Injection
+    struct Dependency{
+        let mainReactorFactory: BPMainReactor.Factory
+        let detailViewControllerFactory: BPDetailViewController.Factory
+        let productCellConfigurator: BPProductCollectionViewCell.Configurator
+        let loadingViewConfigurator: BPLoadingReuseableView.Configurator
+    }
+    
+    struct Payload{
+        
+    }
+    
+    init(dependency: Dependency, payload: Payload){
+        self.detailViewControllerFactory = dependency.detailViewControllerFactory
+        self.productCellConfigurator = dependency.productCellConfigurator
+        self.loadingViewConfigurator = dependency.loadingViewConfigurator
+        super.init(nibName: nil, bundle: nil)
+        
+        self.reactor = dependency.mainReactorFactory.create(payload: .init())
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    // MARK: Variables
+    
+    let detailViewControllerFactory: BPDetailViewController.Factory
+    let productCellConfigurator: BPProductCollectionViewCell.Configurator
+    let loadingViewConfigurator: BPLoadingReuseableView.Configurator
+    var disposeBag: DisposeBag = DisposeBag()
     
     private static let IDENTIFIER_CELL_PRODUCT = "cellProduct"
     private static let IDENTIFIER_VIEW_LOADING = "viewLoading"
-    private static let LOAD_MORE_DISTANCE = 20
-    private var onInitialLoad: PublishSubject<Void> = PublishSubject()
-    private var dataSource: RxCollectionViewSectionedAnimatedDataSource<AnimatableSectionModel<Bool, BPProduct>>!
+    private static let LOAD_MORE_DISTANCE = 4
     
     private lazy var titleImageView: UIImageView = {
         return UIImageView(image: #imageLiteral(resourceName: "ic_store"))
@@ -44,6 +73,9 @@ final class BPMainViewController: BPViewController, View{
         )
         return view
     }()
+
+    private var onInitialLoad: PublishSubject<Void> = PublishSubject()
+    private var dataSource: RxCollectionViewSectionedAnimatedDataSource<AnimatableSectionModel<Bool, BPProduct>>!
     
     override var preferredStatusBarStyle: UIStatusBarStyle{
         if #available(iOS 13, *){
@@ -56,10 +88,10 @@ final class BPMainViewController: BPViewController, View{
         return false
     }
     
+    // MARK: UIViewController Lifecycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.onInitialLoad.onNext(Void())
-        
         self.navigationItem.titleView = titleImageView
         self.view.addSubview(collectionView)
         
@@ -101,7 +133,11 @@ final class BPMainViewController: BPViewController, View{
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        self.startLoadingAnim()
+        if self.isBeingPresented || self.isMovingToParent{
+            self.onInitialLoad.onNext(Void())
+        }else{
+            self.startLoadingAnim()
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -120,10 +156,41 @@ final class BPMainViewController: BPViewController, View{
             ($0 as? BPLoadingReuseableView)?.stopAnim()
         }
     }
+}
+
+extension BPMainViewController: UICollectionViewDelegateFlowLayout{
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        guard let model = self.dataSource?[indexPath] else{
+            return .zero
+        }
+        let flowLayout = collectionViewLayout as! UICollectionViewFlowLayout
+        let width = collectionView.bounds.width
+            - flowLayout.sectionInset.left - flowLayout.sectionInset.right
+            - flowLayout.minimumInteritemSpacing
+        return BPProductCollectionViewCell.size(width: width / 2, model: model)
+    }
     
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
+        guard let isLoading = self.dataSource?[section].model else{
+            return .zero
+        }
+        if isLoading{
+            let width = collectionView.bounds.width
+            return BPLoadingReuseableView.size(width: width)
+        }else{
+            return .zero
+        }
+    }
+}
+
+extension BPMainViewController: UIViewControllerTransitioningDelegate{
+    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        return BPDetailPresentAnimationController()
+    }
+}
+
+extension BPMainViewController: ReactorKit.View{
     // MARK: ReactorKit Lifecycle
-    
-    internal var disposeBag: DisposeBag = DisposeBag()
     
     func bind(reactor: BPMainReactor){
         self.dataSource = RxCollectionViewSectionedAnimatedDataSource<AnimatableSectionModel<Bool, BPProduct>> (
@@ -132,19 +199,23 @@ final class BPMainViewController: BPViewController, View{
                 let cell = collectionView.dequeueReusableCell(
                     withReuseIdentifier: BPMainViewController.IDENTIFIER_CELL_PRODUCT,
                     for: indexPath
-                )
-                (cell as? BPProductCollectionViewCell)?.bind(model: model)
+                ) as! BPProductCollectionViewCell
+                self.productCellConfigurator.configure(cell, payload: .init(
+                    product: model
+                ))
                 return cell
             },
             configureSupplementaryView: {
                 (_, collectionView: UICollectionView, kind: String, indexPath: IndexPath) -> UICollectionReusableView in
                 switch kind{
                 case UICollectionView.elementKindSectionFooter:
-                    return collectionView.dequeueReusableSupplementaryView(
+                    let view = collectionView.dequeueReusableSupplementaryView(
                         ofKind: kind,
                         withReuseIdentifier: BPMainViewController.IDENTIFIER_VIEW_LOADING,
                         for: indexPath
-                    )
+                    ) as! BPLoadingReuseableView
+                    self.loadingViewConfigurator.configure(view, payload: .init())
+                    return view
                 default:
                     return UICollectionReusableView()
                 }
@@ -154,9 +225,9 @@ final class BPMainViewController: BPViewController, View{
         self.onInitialLoad.asObserver()
             .map{
                 BPMainReactor.Action.initialLoad
-        }
-        .bind(to: reactor.action)
-        .disposed(by: self.disposeBag)
+            }
+            .bind(to: reactor.action)
+            .disposed(by: self.disposeBag)
         
         self.collectionView.rx.willDisplayCell
             .filter{ [weak self] (cell: UICollectionViewCell, indexPath: IndexPath) in
@@ -190,11 +261,11 @@ final class BPMainViewController: BPViewController, View{
                 self.collectionView.deselectItems(exclusionAt: indexPath, animated: false)
                 
                 guard let product = reactor?.currentState.products[indexPath.row] else{ return }
-                let detailViewController = BPDetailViewController()
-                detailViewController.reactor = BPDetailReactor()
-                detailViewController.productId = product.id
-                detailViewController.modalPresentationStyle = .fullScreen
+                let detailViewController = self.detailViewControllerFactory.create(payload: .init(
+                    selectedProduct: product
+                ))
                 detailViewController.transitioningDelegate = self
+                detailViewController.modalPresentationStyle = .fullScreen
                 self.present(detailViewController, animated: true)
             })
             .disposed(by: self.disposeBag)
@@ -205,37 +276,6 @@ final class BPMainViewController: BPViewController, View{
             }
             .bind(to: self.collectionView.rx.items(dataSource: dataSource))
             .disposed(by: self.disposeBag)
-    }
-}
-
-extension BPMainViewController: UICollectionViewDelegateFlowLayout{
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        guard let model = self.dataSource?[indexPath] else{
-            return .zero
-        }
-        let flowLayout = collectionViewLayout as! UICollectionViewFlowLayout
-        let width = collectionView.bounds.width
-            - flowLayout.sectionInset.left - flowLayout.sectionInset.right
-            - flowLayout.minimumInteritemSpacing
-        return BPProductCollectionViewCell.size(width: width / 2, model: model)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
-        guard let isLoading = self.dataSource?[section].model else{
-            return .zero
-        }
-        if isLoading{
-            let width = collectionView.bounds.width
-            return BPLoadingReuseableView.size(width: width)
-        }else{
-            return .zero
-        }
-    }
-}
-
-extension BPMainViewController: UIViewControllerTransitioningDelegate{
-    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        return BPDetailPresentAnimationController()
     }
 }
 

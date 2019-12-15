@@ -12,19 +12,40 @@ import ReactorKit
 import RxSwift
 import RxGesture
 import KRWordWrapLabel
+import Pure
 
-final class BPDetailViewController: BPViewController, ReactorKit.View{
-    // MARK: UIViewController Lifecycle
+final class BPDetailViewController: BPViewController, FactoryModule{
+    // MARK: Dependency Injection
+    
+    struct Dependency{
+        let detailReactorFactory: BPDetailReactor.Factory
+    }
+       
+    struct Payload{
+        let selectedProduct: BPProduct
+    }
+       
+    init(dependency: Dependency, payload: Payload){
+        super.init(nibName: nil, bundle: nil)
+        self.reactor = dependency.detailReactorFactory.create(payload: .init())
+        self.productId = payload.selectedProduct.id
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    // MARK: Variables
     
     var productId: UInt = 0
-    
-    private var onInitialLoad: PublishSubject<Void> = PublishSubject<Void>()
+    var disposeBag: DisposeBag = DisposeBag()
     
     private lazy var dismissView: UIView = {
         let view = UIView()
         view.backgroundColor = UIColor.xdark.withAlphaComponent(0.16)
         view.layer.cornerRadius = 20
         view.layer.masksToBounds = true
+        view.alpha = 0
         return view
     }()
     private lazy var dismissImageView: UIImageView = {
@@ -38,15 +59,24 @@ final class BPDetailViewController: BPViewController, ReactorKit.View{
     }()
     private lazy var thumbnailScrollView: UIScrollView = {
         let view = UIScrollView()
+        view.layer.cornerRadius = 24
+        view.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+        view.layer.masksToBounds = true
         view.isPagingEnabled = true
         view.showsHorizontalScrollIndicator = false
         return view
     }()
+    private lazy var thumbnailImageView: UIImageView = {
+        let view = UIImageView()
+        view.alpha = 1
+        view.layer.cornerRadius = 24
+        view.layer.masksToBounds = true
+        view.contentMode = .scaleAspectFill
+        view.clipsToBounds = true
+        return view
+    }()
     private lazy var thumbnailView: UIView = {
         let view = UIView()
-        view.layer.cornerRadius = 24
-        view.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
-        view.layer.masksToBounds = true
         return view
     }()
     private lazy var sellerLabel: UILabel = {
@@ -115,6 +145,7 @@ final class BPDetailViewController: BPViewController, ReactorKit.View{
     }()
     private lazy var contentView: UIView = {
         let view = UIView()
+        view.alpha = 0
         view.backgroundColor = .white
         return view
     }()
@@ -160,8 +191,9 @@ final class BPDetailViewController: BPViewController, ReactorKit.View{
         return view
     }()
     
-    private var isPurchaseButtonAnimated: Bool = false
+    private var isAnimated: Bool = false
     private var isStatusBarHidden: Bool = false
+    private var onInitialLoad: PublishSubject<Void> = PublishSubject<Void>()
     
     override var preferredStatusBarStyle: UIStatusBarStyle{
         return .lightContent
@@ -170,16 +202,18 @@ final class BPDetailViewController: BPViewController, ReactorKit.View{
         return self.isStatusBarHidden
     }
     
+    // MARK: UIViewController Lifecycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .black
-        self.onInitialLoad.onNext(Void())
         
         self.dismissView.addSubview(dismissImageView)
         
         self.thumbnailScrollView.addSubview(thumbnailStackView)
         self.thumbnailView.addSubview(thumbnailScrollView)
         self.thumbnailView.addSubview(progressView)
+        self.thumbnailView.addSubview(thumbnailImageView)
         
         self.warningView.addSubview(warningLabel)
         
@@ -229,6 +263,9 @@ final class BPDetailViewController: BPViewController, ReactorKit.View{
             $0.edges.height.equalToSuperview()
         }
         self.thumbnailScrollView.snp.makeConstraints{
+            $0.edges.equalToSuperview()
+        }
+        self.thumbnailImageView.snp.makeConstraints{
             $0.edges.equalToSuperview()
         }
         self.thumbnailView.snp.makeConstraints{ [unowned self] in
@@ -287,27 +324,51 @@ final class BPDetailViewController: BPViewController, ReactorKit.View{
             .disposed(by: self.disposeBag)
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        if self.isBeingPresented || self.isMovingToParent{
+            self.onInitialLoad.onNext(Void())
+        }
+    }
+    
+    private func animateUI(){
+        guard isAnimated == false else{ return }
+        self.isAnimated = true
+        self.animateRoot()
+    }
+    
+    private func animateRoot(){
+        UIView.animate(
+            withDuration: 0.5,
+            animations: {
+                self.thumbnailImageView.alpha = 0
+                self.contentView.alpha = 1
+                self.dismissView.alpha = 1
+            }, completion: { _ in
+                self.animatePurchaseButton()
+            }
+        )
+    }
+    
     private func animatePurchaseButton(){
-        guard isPurchaseButtonAnimated == false else{ return }
-        self.isPurchaseButtonAnimated = true
-        
         UIView.animate(
             withDuration: 1,
-            delay: 0.5,
+            delay: 0,
             usingSpringWithDamping: 0.65,
             initialSpringVelocity: 0,
             options: [.curveEaseOut],
             animations: {
-            self.purchaseButton.snp.updateConstraints{
-                $0.bottom.equalTo(self.animView.snp.bottom).inset(30 + self.animView.safeAreaInsets.bottom)
+                self.purchaseButton.snp.updateConstraints{
+                    $0.bottom.equalTo(self.animView.snp.bottom).inset(30 + self.animView.safeAreaInsets.bottom)
+                }
+                self.purchaseButton.superview?.layoutIfNeeded()
             }
-            self.purchaseButton.superview?.layoutIfNeeded()
-        })
+        )
     }
-    
+}
+
+extension BPDetailViewController: ReactorKit.View{
     // MARK: ReactorKit Lifecycle
-    
-    var disposeBag: DisposeBag = DisposeBag()
     
     func bind(reactor: BPDetailReactor){
         self.onInitialLoad.asObserver()
@@ -353,7 +414,7 @@ final class BPDetailViewController: BPViewController, ReactorKit.View{
         )
         self.descriptionLabel.text = product.description
         
-        self.animatePurchaseButton()
+        self.animateUI()
     }
     
     private func priceAttributedString(discountRate: String?, cost: String, discountCost: String?) -> NSAttributedString{
@@ -409,6 +470,6 @@ final class BPDetailViewController: BPViewController, ReactorKit.View{
 
 extension BPDetailViewController: SharedElementTransition{
     func sharedElement() -> UIView? {
-        return self.thumbnailView
+        return self.thumbnailImageView
     }
 }

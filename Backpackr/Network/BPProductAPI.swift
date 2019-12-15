@@ -43,9 +43,9 @@ extension BPProductAPI: TargetType{
     var sampleData: Data {
         switch self{
         case .products:
-            return data(from: "Products")
+            return self.data(from: "products")
         case .product:
-            return data(from: "Product")
+            return self.data(from: "product")
         }
     }
 }

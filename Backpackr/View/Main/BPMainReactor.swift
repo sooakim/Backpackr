@@ -10,8 +10,28 @@ import Foundation
 import ReactorKit
 import RxSwift
 import Moya
+import Pure
 
-final class BPMainReactor: Reactor{
+final class BPMainReactor: Reactor, FactoryModule{
+    // MARK: Dependency Injection
+    struct Dependency{
+        let productAPI: MoyaProvider<BPProductAPI>
+    }
+    
+    struct Payload{
+        
+    }
+    
+    init(dependency: BPMainReactor.Dependency, payload: BPMainReactor.Payload) {
+        self.productAPI = dependency.productAPI
+    }
+    
+    init(dependency: BPMainReactor.Dependency){
+        self.productAPI = dependency.productAPI
+    }
+    
+    // MARK: Reactor
+    
     enum Action{
         case initialLoad
         case loadMore
@@ -30,6 +50,7 @@ final class BPMainReactor: Reactor{
     }
     
     let initialState: BPMainReactor.State = State()
+    let productAPI: MoyaProvider<BPProductAPI>
     
     func mutate(action: BPMainReactor.Action) -> Observable<BPMainReactor.Mutation> {
         switch action{
@@ -40,7 +61,7 @@ final class BPMainReactor: Reactor{
                     Mutation.setProducts(products, nextPage: nextPage)
                 }
         case .loadMore:
-            guard !self.currentState.isLoadingNextPage else{
+            guard self.currentState.isLoadingNextPage == false else{
                 return .empty()
             }
             return Observable.concat(
@@ -73,10 +94,6 @@ final class BPMainReactor: Reactor{
             return newState
         }
     }
-    
-    private lazy var productAPI: MoyaProvider<BPProductAPI> = {
-        return MoyaProvider<BPProductAPI>(/*plugins: [NetworkLoggerPlugin(verbose: true)]*/)
-    }()
     
     private func getProducts(inPage page: UInt = 1) -> Observable<([BPProduct], UInt)>{
         return self.productAPI.rx.request(.products(page: page))

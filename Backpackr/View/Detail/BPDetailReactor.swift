@@ -10,8 +10,24 @@ import Foundation
 import ReactorKit
 import RxSwift
 import Moya
+import Pure
 
-final class BPDetailReactor: Reactor{
+final class BPDetailReactor: Reactor, FactoryModule{
+    // MARK: Dependency Injection
+    struct Dependency{
+        let productAPI: MoyaProvider<BPProductAPI>
+    }
+    
+    struct Payload{
+        
+    }
+    
+    init(dependency: BPDetailReactor.Dependency, payload: BPDetailReactor.Payload) {
+        self.productAPI = dependency.productAPI
+    }
+    
+    // MARK: Reactor
+    
     enum Action{
         case initialLoad(id: UInt)
     }
@@ -24,9 +40,10 @@ final class BPDetailReactor: Reactor{
         var product: BPProductDetail
     }
     
-    var initialState: BPDetailReactor.State = State(
+    let initialState: BPDetailReactor.State = State(
         product: BPProductDetail()
     )
+    let productAPI: MoyaProvider<BPProductAPI>
     
     func mutate(action: BPDetailReactor.Action) -> Observable<BPDetailReactor.Mutation> {
         switch action{
@@ -46,10 +63,6 @@ final class BPDetailReactor: Reactor{
             return newState
         }
     }
-    
-    private lazy var productAPI: MoyaProvider<BPProductAPI> = {
-        return MoyaProvider<BPProductAPI>(/*plugins: [NetworkLoggerPlugin(verbose: true)]*/)
-    }()
      
     private func getProduct(id: UInt) -> Observable<BPProductDetail>{
         return self.productAPI.rx.request(.product(id: id))

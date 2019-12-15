@@ -7,7 +7,25 @@
 		<key>Backpackr.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>17</integer>
+			<integer>18</integer>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>EB671AE9239BC561001DACCB</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>EB671AFF239BC562001DACCB</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>EB671B0A239BC562001DACCB</key>
+		<dict>
+			<key>primary</key>
+			<true/>
 		</dict>
 	</dict>
 </dict>

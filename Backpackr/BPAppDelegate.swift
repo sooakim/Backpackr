@@ -8,9 +8,26 @@
 
 import UIKit
 
-@UIApplicationMain
 class BPAppDelegate: UIResponder, UIApplicationDelegate {
+    // MARK: Dependency Injection
+    let dependency: BPAppDependency
+    
+    //for system
+    private override init(){
+        self.dependency = BPAppDependency.resolve()
+        super.init()
+    }
+    
+    //for test
+    init(dependency: BPAppDependency){
+        self.dependency = dependency
+    }
+    
+    // MARK: Variables
+    
     var window: UIWindow?
+    
+    // MARK: UIAppDelegate Lifecycle
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
@@ -18,11 +35,7 @@ class BPAppDelegate: UIResponder, UIApplicationDelegate {
         if #available(iOS 13, *){
             //Do on BPSceneDelegate
         }else {
-            let viewController = BPMainViewController()
-            viewController.reactor = BPMainReactor()
-            let navigationController = BPMainNavigationController(rootViewController: viewController)
-            
-            self.window?.rootViewController = navigationController
+            self.window?.rootViewController = dependency.rootViewControllerFactory.create(payload: .init())
             self.window?.makeKeyAndVisible()
         }
         return true

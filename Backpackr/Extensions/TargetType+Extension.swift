@@ -24,8 +24,8 @@ extension TargetType{
     
     func data(from name: String, withType type: String = "json") -> Data{
         guard
-            let path = Bundle.main.path(forResource: name, ofType: type),
-            let data = try? Data(contentsOf: URL(string: path)!) else{
+            let url = Bundle.main.url(forResource: name, withExtension: type),
+            let data = try? Data(contentsOf: url) else{
             return "".data(using: .utf8)!
         }
         return data

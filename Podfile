@@ -25,16 +25,25 @@ target 'Backpackr' do
   # UI
   pod 'SnapKit', '~> 5.0'
   pod 'KRWordWrapLabel', '~> 2.1'
+  
+  # DI
+  pod 'Pure', '~> 1.1'
 
   target 'BackpackrTests' do
     inherit! :search_paths
     # Pods for testing
     pod 'RxBlocking', '~> 4.5'
     pod 'RxTest', '~> 4.5'
+    pod 'RxExpect', '~> 1.2'
+    
+    pod 'Quick', '~> 2.2'
+    pod 'Nimble', '~> 8.0'
   end
 
   target 'BackpackrUITests' do
     # Pods for testing
+    pod 'Quick', '~> 2.2'
+    pod 'Nimble', '~> 8.0'
   end
 
 end

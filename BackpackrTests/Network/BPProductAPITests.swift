@@ -9,6 +9,7 @@
 import XCTest
 import Moya
 import RxSwift
+import RxBlocking
 @testable import Backpackr
 
 class BPProductAPITests: XCTestCase{
@@ -18,32 +19,41 @@ class BPProductAPITests: XCTestCase{
         self.productAPI = MoyaProvider<BPProductAPI>(stubClosure: MoyaProvider.immediatelyStub)
     }
     
+    override func tearDown() {
+        self.productAPI = nil
+    }
+    
     func testProducts(){
-        _ = self.productAPI.rx.request(.products)
-            .map{ (response: Response) in
-                try JSONDecoder().decode(BPResponse<BPProduct>.self, from: response.data)
-            }
-            .subscribeOn(ConcurrentDispatchQueueScheduler(qos: .background))
-            .observeOn(MainScheduler.instance)
-            .subscribe(onSuccess: { (response: BPResponse<BPProduct>) in
-                XCTAssertTrue(response.body.count != 0)
-            }, onError: { (error: Error) in
-                XCTAssertThrowsError(error)
-            })
+        do{
+            let products = try self.productAPI.rx.request(.products(page: 1))
+                .decodeJson()
+                .map{ (response: BPResponse<BPProduct>) in
+                    response.body
+                }
+                .toBlocking()
+                .single()
+            
+            XCTAssertFalse(products.count == 0)
+        }catch{
+            XCTFail(error.localizedDescription)
+        } 
     }
     
     func testProduct(){
         let testId: UInt = 1
-        _ = self.productAPI.rx.request(.product(id: testId))
-            .map{ (response: Response) in
-                try JSONDecoder().decode(BPResponse<BPProductDetail>.self, from: response.data)
-            }
-            .subscribeOn(ConcurrentDispatchQueueScheduler(qos: .background))
-            .observeOn(MainScheduler.instance)
-            .subscribe(onSuccess: { (response: BPResponse<BPProductDetail>) in
-                XCTAssertTrue(response.body.count != 0)
-            }, onError: { (error: Error) in
-                XCTAssertThrowsError(error)
-            })
+        
+        do{
+            let productDetail = try self.productAPI.rx.request(.product(id: testId))
+                .decodeJson()
+                .map{ (response: BPResponse<BPProductDetail>) in
+                    response.body
+                }
+                .toBlocking()
+                .single()
+            
+            XCTAssertFalse(productDetail.count == 0)
+        }catch{
+            XCTFail(error.localizedDescription)
+        }
     }
 }

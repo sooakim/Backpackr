@@ -8,8 +8,23 @@
 
 import Foundation
 import UIKit
+import Pure
 
-final class BPLoadingReuseableView: BPCollectionResuableView{
+final class BPLoadingReuseableView: BPCollectionResuableView, ConfiguratorModule{
+    // MARK: Dependency Injection
+    struct Dependency{
+        
+    }
+    
+    struct Payload{
+        
+    }
+    
+    func configure(dependency: BPLoadingReuseableView.Dependency, payload: BPLoadingReuseableView.Payload) {
+        
+    }
+    
+    // MARK: Variables
     
     private let KEY_ANIM_ROTATING = "rotatingAnim"
     

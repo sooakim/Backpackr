@@ -10,13 +10,41 @@ import Foundation
 import UIKit
 import SnapKit
 import Kingfisher
+import Pure
 
-final class BPProductCollectionViewCell: BPCollectionViewCell<BPProduct>{
+final class BPProductCollectionViewCell: BPCollectionViewCell, ConfiguratorModule{
+    // MARK: Dependency Injection
+    struct Dependency{
+        
+    }
+    
+    struct Payload{
+        let product: BPProduct
+    }
+    
+    func configure(dependency: BPProductCollectionViewCell.Dependency, payload: BPProductCollectionViewCell.Payload) {
+        self.product = payload.product
+    }
+    
+    // MARK: Variables
+    
+    var product: BPProduct?{
+        didSet{
+            if let thumbnail = product?.thumbnail, let url = URL(string: thumbnail){
+                self.thumbnailImageView.kf.setImage(with: url)
+            }else{
+                self.thumbnailImageView.image = nil
+            }
+            self.titleLabel.text = product?.title ?? ""
+            self.sellerLabel.text = product?.seller ?? ""
+        }
+    }
+    
     private lazy var thumbnailImageView: UIImageView = {
         let view = UIImageView()
         view.backgroundColor = .darkGray
-        view.contentMode = .scaleAspectFill
         view.layer.cornerRadius = 14
+        view.contentMode = .scaleAspectFill
         view.clipsToBounds = true
         return view
     }()
@@ -46,7 +74,7 @@ final class BPProductCollectionViewCell: BPCollectionViewCell<BPProduct>{
         return view
     }()
     private lazy var spaceView2: UIView = {
-       return UIView()
+        return UIView()
     }()
     private lazy var stackView: UIStackView = {
         let view = UIStackView()
@@ -70,7 +98,7 @@ final class BPProductCollectionViewCell: BPCollectionViewCell<BPProduct>{
             $0.edges.equalToSuperview()
         }
         self.thumbnailView.snp.makeConstraints{ [unowned self] in
-             $0.width.equalTo(self.thumbnailView.snp.height)
+            $0.width.equalTo(self.thumbnailView.snp.height)
         }
         self.spaceView1.snp.makeConstraints{
             $0.height.equalTo(4)
@@ -79,12 +107,6 @@ final class BPProductCollectionViewCell: BPCollectionViewCell<BPProduct>{
         self.stackView.snp.makeConstraints{
             $0.edges.equalToSuperview()
         }
-    }
-    
-    override func bind(model: BPProduct) {
-        self.thumbnailImageView.kf.setImage(with: URL(string: model.thumbnail)!)
-        self.titleLabel.text = model.title
-        self.sellerLabel.text = model.seller
     }
     
     static func size(width: CGFloat, model: BPProduct) -> CGSize{
@@ -100,6 +122,6 @@ final class BPProductCollectionViewCell: BPCollectionViewCell<BPProduct>{
 
 extension BPProductCollectionViewCell: SharedElementTransition{
     func sharedElement() -> UIView? {
-         return self.thumbnailImageView
+        return self.thumbnailImageView
     }
 }

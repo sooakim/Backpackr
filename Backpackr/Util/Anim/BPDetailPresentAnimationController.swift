@@ -25,7 +25,7 @@ final class BPDetailPresentAnimationController: NSObject, UIViewControllerAnimat
             let sourceCollectionView = sourceViewController.view.subviews.first,
             let toViewController = transitionContext.viewController(forKey: .to),
             let sourceView = (sourceViewController as? SharedElementTransition)?.sharedElement() as? UIImageView,
-            let toView = (toViewController as? SharedElementTransition)?.sharedElement() else{
+            let toView = (toViewController as? SharedElementTransition)?.sharedElement() as? UIImageView else{
             return
         }
         let containerView = transitionContext.containerView
@@ -91,6 +91,7 @@ final class BPDetailPresentAnimationController: NSObject, UIViewControllerAnimat
                 
                 //show toViewController and finish transition
                 toViewController.view.isHidden = false
+                toView.image = transitionView.image
                 transitionContext.completeTransition(!transitionContext.transitionWasCancelled)
             })
     }

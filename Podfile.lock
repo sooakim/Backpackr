@@ -13,6 +13,11 @@ PODS:
   - Moya/RxSwift (13.0.1):
     - Moya/Core
     - RxSwift (~> 4.0)
+  - Nimble (8.0.4)
+  - Pure (1.1.2):
+    - Pure/Core (= 1.1.2)
+  - Pure/Core (1.1.2)
+  - Quick (2.2.0)
   - ReactorKit (1.2.1):
     - RxSwift (>= 4.0.0)
   - Result (4.1.0)
@@ -24,6 +29,10 @@ PODS:
     - Differentiator (~> 3.0)
     - RxCocoa (~> 4.0)
     - RxSwift (~> 4.0)
+  - RxExpect (1.2.0):
+    - RxCocoa (>= 4.0.0)
+    - RxSwift (>= 4.0.0)
+    - RxTest (>= 4.0.0)
   - RxGesture (2.2.0):
     - RxCocoa (~> 4.5)
     - RxSwift (~> 4.5)
@@ -37,10 +46,14 @@ DEPENDENCIES:
   - KRWordWrapLabel (~> 2.1)
   - Moya (~> 13.0)
   - Moya/RxSwift (~> 13.0)
+  - Nimble (~> 8.0)
+  - Pure (~> 1.1)
+  - Quick (~> 2.2)
   - ReactorKit (~> 1.2)
   - RxBlocking (~> 4.5)
   - RxCocoa (~> 4.5)
   - RxDataSources (~> 3.1)
+  - RxExpect (~> 1.2)
   - RxGesture (~> 2.2)
   - RxSwift (~> 4.5)
   - RxTest (~> 4.5)
@@ -53,11 +66,15 @@ SPEC REPOS:
     - Kingfisher
     - KRWordWrapLabel
     - Moya
+    - Nimble
+    - Pure
+    - Quick
     - ReactorKit
     - Result
     - RxBlocking
     - RxCocoa
     - RxDataSources
+    - RxExpect
     - RxGesture
     - RxSwift
     - RxTest
@@ -69,16 +86,20 @@ SPEC CHECKSUMS:
   Kingfisher: 4569606189149e19c7d9439f47e885d0679b7a90
   KRWordWrapLabel: ee5d4e55c16190d69a80d97f283dba150c4f479b
   Moya: f4a4b80ff2f8a4ffc208dfb31cd91636622fee6e
+  Nimble: 18d5360282923225d62b09d781f63abc1a0111fc
+  Pure: da92a66df10fc902db96290083c121f84ee73d6f
+  Quick: 7fb19e13be07b5dfb3b90d4f9824c855a11af40e
   ReactorKit: 8be57f0527ad1ac2963cd5c338274a46a01e57a3
   Result: bd966fac789cc6c1563440b348ab2598cc24d5c7
   RxBlocking: 79413e4d916f44bb3e113c5b2cc059e36fe58910
   RxCocoa: cbf70265dc65a981d4ac982e513c10cf23df24a0
   RxDataSources: a843bad90c29817f5923ec8163f4af2de084ceb3
+  RxExpect: 9982ae7345b0083472f3b2492cdbc09525747d64
   RxGesture: c1b7bf17166b0ef9d642a9510f8bac5785f18990
   RxSwift: f172070dfd1a93d70a9ab97a5a01166206e1c575
   RxTest: 3ccb66bfbace0bf7df1c43a7c75d046f8ce60372
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
 
-PODFILE CHECKSUM: b5e195cfe699ad58b2cc0bfc14668db37045d633
+PODFILE CHECKSUM: d0a47b80aee35af98b36498ae443bd23bd386a5a
 
 COCOAPODS: 1.8.4

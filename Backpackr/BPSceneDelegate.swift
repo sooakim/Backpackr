@@ -18,16 +18,13 @@ class BPSceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
-        let viewController = BPMainViewController()
-        viewController.reactor = BPMainReactor()
-        let navigationController = BPMainNavigationController(rootViewController: viewController)
 
         // Use a UIHostingController as window root view controller.
         if let windowScene = scene as? UIWindowScene {
-            let window = UIWindow(windowScene: windowScene)
-            window.rootViewController = navigationController
-            self.window = window
-            window.makeKeyAndVisible()
+            let appDelegate = UIApplication.shared.delegate as? BPAppDelegate
+            self.window = UIWindow(windowScene: windowScene)
+            self.window?.rootViewController = appDelegate?.dependency.rootViewControllerFactory.create(payload: .init())
+            self.window?.makeKeyAndVisible()
         }
     }
 }

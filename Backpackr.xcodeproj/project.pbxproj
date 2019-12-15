@@ -14,8 +14,6 @@
 		EB671AF0239BC561001DACCB /* BPSceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB671AEF239BC561001DACCB /* BPSceneDelegate.swift */; };
 		EB671AF4239BC562001DACCB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EB671AF3239BC562001DACCB /* Assets.xcassets */; };
 		EB671AFA239BC562001DACCB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EB671AF8239BC562001DACCB /* LaunchScreen.storyboard */; };
-		EB671B05239BC562001DACCB /* BackpackrTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB671B04239BC562001DACCB /* BackpackrTests.swift */; };
-		EB671B10239BC562001DACCB /* BackpackrUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB671B0F239BC562001DACCB /* BackpackrUITests.swift */; };
 		EB671B1F239BCADD001DACCB /* BPMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB671B1E239BCADD001DACCB /* BPMainViewController.swift */; };
 		EB671B22239BCB03001DACCB /* BPMainNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB671B21239BCB03001DACCB /* BPMainNavigationController.swift */; };
 		EB671B24239BCC96001DACCB /* BPMainReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB671B23239BCC96001DACCB /* BPMainReactor.swift */; };
@@ -32,8 +30,8 @@
 		EB671B42239BFFB0001DACCB /* BPProductAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB671B41239BFFB0001DACCB /* BPProductAPI.swift */; };
 		EB671B44239C00B7001DACCB /* TargetType+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB671B43239C00B7001DACCB /* TargetType+Extension.swift */; };
 		EB671B47239C0328001DACCB /* BPProductAPITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB671B46239C0328001DACCB /* BPProductAPITests.swift */; };
-		EB671B4A239C06DE001DACCB /* Products.json in Resources */ = {isa = PBXBuildFile; fileRef = EB671B49239C06DE001DACCB /* Products.json */; };
-		EB671B4C239C0712001DACCB /* Product.json in Resources */ = {isa = PBXBuildFile; fileRef = EB671B4B239C0712001DACCB /* Product.json */; };
+		EB671B4A239C06DE001DACCB /* products.json in Resources */ = {isa = PBXBuildFile; fileRef = EB671B49239C06DE001DACCB /* products.json */; };
+		EB671B4C239C0712001DACCB /* product.json in Resources */ = {isa = PBXBuildFile; fileRef = EB671B4B239C0712001DACCB /* product.json */; };
 		EB671B4F239CB4CF001DACCB /* BPProductCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB671B4E239CB4CF001DACCB /* BPProductCollectionViewCell.swift */; };
 		EB671B51239CB7D5001DACCB /* BPCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB671B50239CB7D5001DACCB /* BPCollectionViewCell.swift */; };
 		EBDB1269239CCB4600C37A7E /* NotoSansKR-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = EBDB1267239CCB4600C37A7E /* NotoSansKR-Black.otf */; };
@@ -55,6 +53,14 @@
 		EBDB129823A011C900C37A7E /* CGRect+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDB129723A011C900C37A7E /* CGRect+Extension.swift */; };
 		EBDB129B23A1206F00C37A7E /* PrimitiveSequence+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDB129A23A1206F00C37A7E /* PrimitiveSequence+Extension.swift */; };
 		EBDB12A123A4B68100C37A7E /* BPView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDB12A023A4B68100C37A7E /* BPView.swift */; };
+		EBDB12A423A4BEFD00C37A7E /* BPAppDependency.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDB12A323A4BEFD00C37A7E /* BPAppDependency.swift */; };
+		EBDB12A623A4CC0F00C37A7E /* BPMainViewControllerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDB12A523A4CC0F00C37A7E /* BPMainViewControllerSpec.swift */; };
+		EBDB12A823A4D56200C37A7E /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDB12A723A4D56200C37A7E /* main.swift */; };
+		EBDB12AC23A4D63400C37A7E /* BPAppDelegateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDB12AB23A4D63400C37A7E /* BPAppDelegateTests.swift */; };
+		EBDB12AF23A4D65200C37A7E /* BPTestAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDB12AE23A4D65200C37A7E /* BPTestAppDelegate.swift */; };
+		EBDB12B723A51B3B00C37A7E /* BPMainReactorSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDB12B623A51B3B00C37A7E /* BPMainReactorSpec.swift */; };
+		EBDB12BA23A6A7BD00C37A7E /* BPDetailViewControllerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDB12B923A6A7BD00C37A7E /* BPDetailViewControllerSpec.swift */; };
+		EBDB12BC23A6A80200C37A7E /* BPDetailReactorSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDB12BB23A6A80200C37A7E /* BPDetailReactorSpec.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -90,10 +96,8 @@
 		EB671AF9239BC562001DACCB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EB671AFB239BC562001DACCB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EB671B00239BC562001DACCB /* BackpackrTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BackpackrTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		EB671B04239BC562001DACCB /* BackpackrTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackpackrTests.swift; sourceTree = "<group>"; };
 		EB671B06239BC562001DACCB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EB671B0B239BC562001DACCB /* BackpackrUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BackpackrUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		EB671B0F239BC562001DACCB /* BackpackrUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackpackrUITests.swift; sourceTree = "<group>"; };
 		EB671B11239BC562001DACCB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EB671B1E239BCADD001DACCB /* BPMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPMainViewController.swift; sourceTree = "<group>"; };
 		EB671B21239BCB03001DACCB /* BPMainNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPMainNavigationController.swift; sourceTree = "<group>"; };
@@ -111,8 +115,8 @@
 		EB671B41239BFFB0001DACCB /* BPProductAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPProductAPI.swift; sourceTree = "<group>"; };
 		EB671B43239C00B7001DACCB /* TargetType+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TargetType+Extension.swift"; sourceTree = "<group>"; };
 		EB671B46239C0328001DACCB /* BPProductAPITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPProductAPITests.swift; sourceTree = "<group>"; };
-		EB671B49239C06DE001DACCB /* Products.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Products.json; sourceTree = "<group>"; };
-		EB671B4B239C0712001DACCB /* Product.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Product.json; sourceTree = "<group>"; };
+		EB671B49239C06DE001DACCB /* products.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = products.json; sourceTree = "<group>"; };
+		EB671B4B239C0712001DACCB /* product.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = product.json; sourceTree = "<group>"; };
 		EB671B4E239CB4CF001DACCB /* BPProductCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPProductCollectionViewCell.swift; sourceTree = "<group>"; };
 		EB671B50239CB7D5001DACCB /* BPCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPCollectionViewCell.swift; sourceTree = "<group>"; };
 		EBDB1267239CCB4600C37A7E /* NotoSansKR-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Black.otf"; sourceTree = "<group>"; };
@@ -135,6 +139,14 @@
 		EBDB129723A011C900C37A7E /* CGRect+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGRect+Extension.swift"; sourceTree = "<group>"; };
 		EBDB129A23A1206F00C37A7E /* PrimitiveSequence+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PrimitiveSequence+Extension.swift"; sourceTree = "<group>"; };
 		EBDB12A023A4B68100C37A7E /* BPView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPView.swift; sourceTree = "<group>"; };
+		EBDB12A323A4BEFD00C37A7E /* BPAppDependency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPAppDependency.swift; sourceTree = "<group>"; };
+		EBDB12A523A4CC0F00C37A7E /* BPMainViewControllerSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPMainViewControllerSpec.swift; sourceTree = "<group>"; };
+		EBDB12A723A4D56200C37A7E /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		EBDB12AB23A4D63400C37A7E /* BPAppDelegateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPAppDelegateTests.swift; sourceTree = "<group>"; };
+		EBDB12AE23A4D65200C37A7E /* BPTestAppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPTestAppDelegate.swift; sourceTree = "<group>"; };
+		EBDB12B623A51B3B00C37A7E /* BPMainReactorSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPMainReactorSpec.swift; sourceTree = "<group>"; };
+		EBDB12B923A6A7BD00C37A7E /* BPDetailViewControllerSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPDetailViewControllerSpec.swift; sourceTree = "<group>"; };
+		EBDB12BB23A6A80200C37A7E /* BPDetailReactorSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPDetailReactorSpec.swift; sourceTree = "<group>"; };
 		F02D8817F317C236E5197CC4 /* Pods-Backpackr-BackpackrUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Backpackr-BackpackrUITests.release.xcconfig"; path = "Target Support Files/Pods-Backpackr-BackpackrUITests/Pods-Backpackr-BackpackrUITests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -214,6 +226,7 @@
 		EB671AEC239BC561001DACCB /* Backpackr */ = {
 			isa = PBXGroup;
 			children = (
+				EBDB12A223A4BEEE00C37A7E /* DI */,
 				EB671B25239BD304001DACCB /* Model */,
 				EB671B40239BFF90001DACCB /* Network */,
 				EB671B1D239BCAC0001DACCB /* View */,
@@ -222,6 +235,7 @@
 				EB671B3E239BF85F001DACCB /* Resources */,
 				EB671AED239BC561001DACCB /* BPAppDelegate.swift */,
 				EB671AEF239BC561001DACCB /* BPSceneDelegate.swift */,
+				EBDB12A723A4D56200C37A7E /* main.swift */,
 			);
 			path = Backpackr;
 			sourceTree = "<group>";
@@ -230,8 +244,10 @@
 			isa = PBXGroup;
 			children = (
 				EB671B45239C0318001DACCB /* Network */,
-				EB671B04239BC562001DACCB /* BackpackrTests.swift */,
-				EB671B06239BC562001DACCB /* Info.plist */,
+				EBDB12B123A51A9900C37A7E /* View */,
+				EBDB12A923A4D5CD00C37A7E /* Resources */,
+				EBDB12AB23A4D63400C37A7E /* BPAppDelegateTests.swift */,
+				EBDB12AE23A4D65200C37A7E /* BPTestAppDelegate.swift */,
 			);
 			path = BackpackrTests;
 			sourceTree = "<group>";
@@ -239,8 +255,8 @@
 		EB671B0E239BC562001DACCB /* BackpackrUITests */ = {
 			isa = PBXGroup;
 			children = (
-				EB671B0F239BC562001DACCB /* BackpackrUITests.swift */,
-				EB671B11239BC562001DACCB /* Info.plist */,
+				EBDB12B823A6A7A700C37A7E /* View */,
+				EBDB12AA23A4D60700C37A7E /* Resources */,
 			);
 			path = BackpackrUITests;
 			sourceTree = "<group>";
@@ -259,11 +275,10 @@
 		EB671B20239BCAEC001DACCB /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				EBDB12B023A4E96A00C37A7E /* Item */,
 				EB671B21239BCB03001DACCB /* BPMainNavigationController.swift */,
 				EB671B1E239BCADD001DACCB /* BPMainViewController.swift */,
 				EB671B23239BCC96001DACCB /* BPMainReactor.swift */,
-				EB671B4E239CB4CF001DACCB /* BPProductCollectionViewCell.swift */,
-				EBDB128C239E54FB00C37A7E /* BPLoadingReusableView.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -367,8 +382,8 @@
 		EB671B48239C06AE001DACCB /* SampleData */ = {
 			isa = PBXGroup;
 			children = (
-				EB671B49239C06DE001DACCB /* Products.json */,
-				EB671B4B239C0712001DACCB /* Product.json */,
+				EB671B49239C06DE001DACCB /* products.json */,
+				EB671B4B239C0712001DACCB /* product.json */,
 			);
 			path = SampleData;
 			sourceTree = "<group>";
@@ -414,6 +429,58 @@
 				EBDB1293239E94D400C37A7E /* BPDetailPresentAnimationController.swift */,
 			);
 			path = Anim;
+			sourceTree = "<group>";
+		};
+		EBDB12A223A4BEEE00C37A7E /* DI */ = {
+			isa = PBXGroup;
+			children = (
+				EBDB12A323A4BEFD00C37A7E /* BPAppDependency.swift */,
+			);
+			path = DI;
+			sourceTree = "<group>";
+		};
+		EBDB12A923A4D5CD00C37A7E /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				EB671B06239BC562001DACCB /* Info.plist */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		EBDB12AA23A4D60700C37A7E /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				EB671B11239BC562001DACCB /* Info.plist */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		EBDB12B023A4E96A00C37A7E /* Item */ = {
+			isa = PBXGroup;
+			children = (
+				EB671B4E239CB4CF001DACCB /* BPProductCollectionViewCell.swift */,
+				EBDB128C239E54FB00C37A7E /* BPLoadingReusableView.swift */,
+			);
+			path = Item;
+			sourceTree = "<group>";
+		};
+		EBDB12B123A51A9900C37A7E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				EBDB12B623A51B3B00C37A7E /* BPMainReactorSpec.swift */,
+				EBDB12BB23A6A80200C37A7E /* BPDetailReactorSpec.swift */,
+			);
+			name = View;
+			path = "퍋ㅈ";
+			sourceTree = "<group>";
+		};
+		EBDB12B823A6A7A700C37A7E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				EBDB12A523A4CC0F00C37A7E /* BPMainViewControllerSpec.swift */,
+				EBDB12B923A6A7BD00C37A7E /* BPDetailViewControllerSpec.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -531,10 +598,10 @@
 				EB671B3D239BED4D001DACCB /* Preview Content in Resources */,
 				EBDB1269239CCB4600C37A7E /* NotoSansKR-Black.otf in Resources */,
 				EBDB1280239D545B00C37A7E /* AppleSDGothicNeo.ttc in Resources */,
-				EB671B4A239C06DE001DACCB /* Products.json in Resources */,
+				EB671B4A239C06DE001DACCB /* products.json in Resources */,
 				EBDB1284239D5BB600C37A7E /* Localizable.strings in Resources */,
 				EB671AFA239BC562001DACCB /* LaunchScreen.storyboard in Resources */,
-				EB671B4C239C0712001DACCB /* Product.json in Resources */,
+				EB671B4C239C0712001DACCB /* product.json in Resources */,
 				EB671AF4239BC562001DACCB /* Assets.xcassets in Resources */,
 				EBDB1271239D050400C37A7E /* SF-Pro-Text-Black.otf in Resources */,
 			);
@@ -681,7 +748,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EBDB12A423A4BEFD00C37A7E /* BPAppDependency.swift in Sources */,
 				EBDB1291239E86ED00C37A7E /* Bool+Extension.swift in Sources */,
+				EBDB12A823A4D56200C37A7E /* main.swift in Sources */,
 				EBDB1294239E94D400C37A7E /* BPDetailPresentAnimationController.swift in Sources */,
 				EB671B34239BE673001DACCB /* BPCollectionViewController.swift in Sources */,
 				EBDB126C239CCCA600C37A7E /* UIFont+Extension.swift in Sources */,
@@ -720,8 +789,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EBDB12AC23A4D63400C37A7E /* BPAppDelegateTests.swift in Sources */,
+				EBDB12B723A51B3B00C37A7E /* BPMainReactorSpec.swift in Sources */,
 				EB671B47239C0328001DACCB /* BPProductAPITests.swift in Sources */,
-				EB671B05239BC562001DACCB /* BackpackrTests.swift in Sources */,
+				EBDB12BC23A6A80200C37A7E /* BPDetailReactorSpec.swift in Sources */,
+				EBDB12AF23A4D65200C37A7E /* BPTestAppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -729,7 +801,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EB671B10239BC562001DACCB /* BackpackrUITests.swift in Sources */,
+				EBDB12BA23A6A7BD00C37A7E /* BPDetailViewControllerSpec.swift in Sources */,
+				EBDB12A623A4CC0F00C37A7E /* BPMainViewControllerSpec.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -824,6 +897,7 @@
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_SWIFT_FLAGS = "-D DEBUG";
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -941,7 +1015,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = SM396Z3QTU;
-				INFOPLIST_FILE = BackpackrTests/Info.plist;
+				INFOPLIST_FILE = BackpackrTests/Resources/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -964,7 +1038,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = SM396Z3QTU;
-				INFOPLIST_FILE = BackpackrTests/Info.plist;
+				INFOPLIST_FILE = BackpackrTests/Resources/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -986,7 +1060,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = SM396Z3QTU;
-				INFOPLIST_FILE = BackpackrUITests/Info.plist;
+				INFOPLIST_FILE = BackpackrUITests/Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1007,7 +1081,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = SM396Z3QTU;
-				INFOPLIST_FILE = BackpackrUITests/Info.plist;
+				INFOPLIST_FILE = BackpackrUITests/Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
